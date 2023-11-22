@@ -1,0 +1,132 @@
+@import url('https://fonts.googleapis.com/css2?family=Nunito+Sans:opsz,wght@6..12,300;6..12,400;6..12,500;6..12,600;6..12,700;6..12,800;6..12,900&display=swap');
+
+
+* {
+  padding: 0;
+  margin: 0;
+  font-family: 'Nunito Sans', sans-serif;
+}
+
+:root {
+  --background-color: #000;
+  --colorItens: #FEB800;
+}
+
+body {
+    -webkit-font-smoothing: antialiased;
+    background-color: var(--background-color);
+    color: var(--colorItens);
+}
+
+a {
+  color: var(--colorItens);
+}
+
+input::placeholder {
+  color: #000000;
+  font-style: italic;
+}
+
+#button_back {
+  position: absolute;
+  left: 10px;
+  top: 2rem;
+}
+
+.logo_page {
+  margin-top: 5.5rem;
+  text-align: center;
+}
+
+.logo_page img {
+  margin-bottom: 5px;
+}
+
+.logo_page h1 {
+  font-weight: 800;
+}
+
+#form-user fieldset{
+  margin: 1rem;
+  display: flex;
+  flex-direction: column;
+  border: none;
+}
+
+#form-user fieldset label {
+  margin-bottom: 0.6rem;
+  font-size: 1.1rem;
+  font-weight: 700;
+}
+
+#form-user fieldset input, select {
+  margin-bottom: 0.5rem;
+  border: none;
+  background-color: var(--colorItens);
+  padding: 0.6rem;
+  border-radius: 20px;
+  color: #000000;
+  font-size: 1rem;
+  font-weight: 700;
+}
+
+#input_senha {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+}
+
+#input_senha i {
+  position: absolute;
+  cursor: pointer;
+  color: #000000;
+  top: 49%;
+  right: 2vh;
+  font-size: 23px;
+}
+
+#form-user:focus, input:focus, select:focus {
+  outline: 0;
+}
+
+.links-user {
+  margin-bottom: 0.5rem;
+  text-align: center;
+}
+
+.links-user p {
+  font-weight: 600;
+}
+
+#submit_button {
+  display: flex;
+  margin: auto;
+  justify-content: center;
+  text-align: center;
+  width: 160px;
+  margin-bottom: 0.5rem;
+  border: none;
+  background-color: var(--colorItens);
+  font-size: 1rem;
+  padding: 0.6rem;
+  border-radius: 20px;
+  font-weight: 800;
+}
+
+#submit_button:focus {
+  transition: 0.2s;
+  color: var(--colorItens);
+  background: #000000;
+  border: 2px solid var(--colorItens);
+}
+
+@media (min-width: 700px) {
+  #form-user fieldset {
+    align-items: center;
+    text-align: center;
+  }
+
+  #form-user fieldset input, select {
+    width: 600px;
+  }
+}

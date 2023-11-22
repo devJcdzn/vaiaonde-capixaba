@@ -1,0 +1,110 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&display=swap');
+
+/* FEB800 */
+
+:root{
+  --background-color: #000000;
+  --colorItens: #FEB800;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family:'Montserrat', sans-serif;
+}
+
+body {
+  background-color: var(--background-color);
+  color: #FEB800; 
+}
+
+main {
+  margin: auto;
+  text-align: center;
+  max-width: 600px;
+}
+
+#icon-back {
+  position: relative;
+  left: 10px;
+  top: 2rem;
+}
+
+header {
+  text-align: center;
+  margin-top: 3rem;
+}
+
+header h1 {
+  margin-top: 0.5rem;
+}
+
+section {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  margin: 3rem 2rem 0 2rem;
+}
+
+#password-inputId i {
+  font-size: 20px;
+  color: #000000;
+  position: absolute;
+  transform: translate(-2rem, 0.7rem);
+}
+
+#password-inputId  input{
+  width: 100%;
+}
+
+section label {
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+}
+
+section input {
+  background-color: var(--colorItens);
+  margin-bottom: 1rem;
+  border-radius: 20px;
+  border: none;
+  outline: none;
+  padding: 0.8rem;
+  text-align: center;
+  max-width: auto;
+  font-size: 16px;
+  font-weight: 600;
+}
+
+button {
+  margin-top: 0.5rem;
+  font-size: 18px;
+  background: var(--colorItens);
+  width: 160px;
+  font-weight: 800;
+  border-radius: 20px;
+  border: none;
+  outline: none;
+  padding: 0.6rem;
+  
+}
+
+button:focus {
+  transition: 0.2s;
+  color: var(--colorItens);
+  background: #000000;
+  border: 2px solid var(--colorItens);
+}
+
+footer {
+  margin-top: 2rem;
+  font-weight: 600;
+}
+
+footer p {
+  padding: 3px;
+}
+
+footer a {
+  color: var(--colorItens);
+}

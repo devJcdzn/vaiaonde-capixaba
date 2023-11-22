@@ -1,0 +1,170 @@
+@import url('https://fonts.googleapis.com/css2?family=Nunito+Sans:opsz,wght@6..12,300;6..12,400;6..12,500;6..12,600;6..12,700;6..12,800;6..12,900&display=swap');
+
+:root {
+  --background-color: #000;
+  --colorItens: #FEB800;
+}
+
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  font-family: 'Nunito Sans', sans-serif;
+}
+
+body {
+  -webkit-font-smoothing: antialiased;
+  background-color: var(--background-color);
+  color: var(--colorItens);
+}
+
+a {
+  color:#FEB800;
+  text-decoration: none;
+}
+
+/* --- Barra de navegação */
+
+.navbar {
+  display: flex;
+  justify-content: center;
+  height: 10vh;
+  margin-bottom: 2rem;
+
+}
+
+.nav-list {
+  margin: 1rem;
+  list-style: none;
+  display: flex;
+}
+
+.nav-list li {
+  padding: 8px;
+}
+
+.nav-list li:first-child {
+  position: absolute;
+  left: 10px;
+  top: 2rem;
+}
+
+/* --- Carrosel */
+
+.carousel {
+  margin: 1rem;
+  padding: 0.5rem;
+  
+}
+
+.carousel-control-prev, .carousel-control-next {
+  opacity: 1;
+}
+
+/* --- Sobre o restaurante */
+
+.sobre-restaurante {
+  margin: 1rem;
+  padding: 0.5rem;
+  display: flex;
+  justify-content: space-between;
+}
+
+.info-restaurante h5 {
+  font-weight: 700;
+  margin: 0;
+}
+
+.info-restaurante p {
+  font-weight: 300;
+  margin: 0;
+}
+
+.distanc-restaurante span {
+  font-weight: 700;
+}
+
+.button-restaurante {
+  width: 14rem; 
+  padding: 0.5rem;
+  font-weight: 800;
+  margin: auto;
+  text-align: center;
+  color: #000;  
+  background: var(--colorItens);
+  margin-bottom: 2rem;
+}
+
+.horarios-restaurante {
+  margin: 1rem; 
+}
+
+.horarios-restaurante ul li{
+  list-style-image: url(../../public/clock.svg);
+}
+
+.horarios-restaurante h5, h6 {
+  text-align: center;
+  font-weight: 700;
+}
+
+.info-estabelecimento {
+  margin: 1rem;
+}
+
+.info-estabelecimento ul li:nth-child(1){
+  list-style-image: url(../../public/instagram.svg);
+}
+
+.info-estabelecimento ul li:nth-child(2) {
+  list-style-image: url(../../public/whatsapp.svg);
+}
+
+.info_local-restaurante {
+  display: flex;
+
+}
+
+.endereco-restaurante {
+  margin: 1rem;
+  text-align: center;
+}
+
+.button_Local-restaurante {
+  width: 9rem; 
+  padding: 0.5rem;
+  font-weight: 800;
+  margin: auto;
+  text-align: center;
+  color: #000;  
+  background: var(--colorItens);
+  margin-bottom: 2rem;
+}
+
+.regras-do-restaurante, .regras-do-restaurante ul {
+  margin: 1rem;
+  list-style-type: decimal;
+}
+
+.regras-do-restaurante h5 {
+  text-align: center;
+  font-weight: 700;
+}
+
+footer h5 {
+  text-align: center;
+  font-weight: 700;
+  margin-bottom: 1rem;
+}
+
+.icons-novidades {
+  text-align: center;
+  margin-bottom: 1rem;
+}
+
+.icons-novidades img {
+  margin: 5px;
+  height: 36px;
+  text-align: center;
+  color: #FEB800;
+}

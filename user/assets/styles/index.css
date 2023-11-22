@@ -1,0 +1,123 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&display=swap');
+
+/* FEB800 */
+
+:root{
+  --background-color: #000000;
+  --colorItens: #FEB800;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family:'Montserrat', sans-serif;
+}
+
+body {
+  background-color: var(--background-color);
+  color: #FEB800; 
+}
+
+main {
+  margin: auto;
+  text-align: center;
+  max-width: 600px;
+}
+
+#icon-back {
+  position: relative;
+  left: 10px;
+  top: 2rem;
+}
+
+header {
+  text-align: center;
+}
+
+header img {
+  margin: 5px;
+}
+
+.title-page {
+  margin-top: 0.5rem;
+}
+
+section {
+  margin-top: 1rem;
+}
+
+#name-user {
+  text-transform: uppercase;
+  margin-bottom: 0.8rem;
+}
+
+.info-user {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 0.5rem;
+}
+
+.info-user label {
+  margin-bottom: 0.5rem;
+}
+
+.info-user p {
+  text-transform: uppercase;
+  font-weight: 800;
+}
+
+.use-cupom {
+  background: var(--colorItens);
+  border: none;
+  padding: 1.4rem;
+  border-radius: 20px;
+  margin-bottom: 0.5rem;
+  font-weight: 800;
+}
+
+.use-cupom:focus {
+  transition: 0.3s;
+  border: 2px solid #FEB800;
+  background: #000;
+  color: #FEB800;
+}
+
+.buttons-conta {
+  margin-top: 3rem;
+}
+
+.buttons-conta button {
+  background: none;
+  color: #ef233c;
+  text-transform: uppercase;
+  line-height: 10px;
+  border: none;
+  border-radius: 20px;
+  margin-bottom: 0.5rem;
+  font-weight: 800;
+  text-align: center;
+  margin: 1rem;
+}
+
+.buttons-conta button div {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+footer {
+  position: relative;
+  top: 6vh;
+}
+
+.icons-novidades {
+  text-align: center;
+}
+
+.icons-novidades img {
+  margin: 0.2rem;
+  height: 30px;
+}
+
+

@@ -1,0 +1,118 @@
+function verificarLogin(){
+    if (localStorage.getItem('usuario') != "logado") {
+        window.location.href = 'login.html';
+    }
+}
+
+function verificarAssinatura(){
+    const loginData = {
+        email: localStorage.getItem('email'),
+        senha: localStorage.getItem('senha')
+      };
+    
+      fetch('https://vaiaondecapixaba.com.br/api/usuarios/login/', {
+        method: 'POST',
+        body: JSON.stringify(loginData)
+      })
+        .then(response => response.json())
+    
+        .then(data => {
+          if (data.success) {
+            localStorage.setItem('assinatura', data.usuario.assinatura);
+          } else {
+            window.alert("Credenciais incorretas!");
+          }
+        })
+    
+        .catch(error => {
+          console.error('Erro:', error);
+        });
+}
+
+function logout() {
+    
+    const confirmacao = confirm("Tem certeza de que deseja sair da conta?");
+
+    if (confirmacao) {
+        localStorage.setItem('usuario', 'deslogado');
+        window.location.href = "login.html";
+    }
+}
+
+function deletarConta(){
+    const confirmacao = confirm("Tem certeza de que deseja excluir sua conta? Essa ação não pode ser desfeita.");
+
+    if (confirmacao) {
+        const userId = localStorage.getItem('id');
+
+        fetch(`https://vaiaondecapixaba.com.br/api/usuarios/remover/?id=${userId}/`, {
+            method: 'DELETE',
+        })
+            
+            .then(response => response.json())
+    
+            .then(data => {
+                if (data.result) {
+                    window.location.href = "login.html";
+                } else {
+                    console.error(data.message);
+                }
+            })
+            .catch(error => {
+                console.error('Erro:', error);
+            });
+    
+        logout();
+    }
+}
+
+let date = new Date();
+let headers = new Headers();
+var perfil = document.getElementById("user-img");
+var nome = document.getElementById("name-user");
+var idade = document.getElementById("data-nascimento");
+var email = document.getElementById("email-user");
+var telefone = document.getElementById("telefone-user")
+var assinatura = document.getElementById("assinatura");
+var botaoAssinatura = document.getElementById("assinaturaButton");
+
+headers.append('Content-Type', 'application/json');
+headers.append('Accept', 'application/json');
+headers.append('Access-Control-Allow-Credentials', 'true');
+headers.append('GET', 'POST', 'OPTIONS', 'DELETE');
+
+if(localStorage.getItem('genero') == "F"){
+    perfil.src = "https://ondeirecomercapixaba.com.br/uploads/usuarios/feminino.png"
+} else if(localStorage.getItem('genero') == "M"){
+    perfil.src = "https://ondeirecomercapixaba.com.br/uploads/usuarios/masculino.png"
+} else {
+    perfil.src = "https://ondeirecomercapixaba.com.br/uploads/usuarios/outros.png"
+}
+
+nome.textContent = localStorage.getItem('nome');
+
+idade.textContent = localStorage.getItem('idade');
+
+email.textContent = localStorage.getItem('email');
+
+telefone.textContent = localStorage.getItem('telefone');
+
+if(localStorage.getItem('assinatura') == "0"){
+    assinatura.textContent = "Você não faz parte do Vai Aonde Club";
+    botaoAssinatura.href = "infoclub.html"
+
+} else if(localStorage.getItem('assinatura') == "1"){
+    assinatura.textContent = "Você faz parte do Vai Aonde Club BASIC😎!";
+    botaoAssinatura.href = "assinatura.html"
+
+} else if(localStorage.getItem('assinatura') == "2"){
+    assinatura.textContent = "Você faz parte do Vai Aonde Club MÉDIO😎!";
+    botaoAssinatura.href = "assinatura.html"
+
+} else if(localStorage.getItem('assinatura') == "3"){
+    assinatura.textContent = "Você faz parte do Vai Aonde Club PLUS😎!";
+    botaoAssinatura.href = "assinatura.html"
+}
+
+window.addEventListener('load', verificarLogin);
+window.addEventListener('load', verificarAssinatura)
