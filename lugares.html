@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="pt-br">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,85 +8,55 @@
   <link rel="stylesheet" href="assets/styles/lugares.css">
   <title>Onde ir</title>
 </head>
-<body>
-    <dialog> 
-      <div class="options-modal">
-        <h1>Escolha a cidade</h1>
-       <select name="Cidade" id="">
-        <option value="Serra">Serra</option>
-        <option value="Vila Velha">Vila Velha</option>
-        <option value="Vitoria">Vítoria</option>
-        <option value="Cariacica">Cariacica</option>
-        <option value="Abertos">restaurantes Abertos</option>
-       </select>
-       <button id="filter-modal">Filtrar</button>
-      </div>
-    </dialog>
 
-    <header>
-      <img src="../public/VA-logo.png" alt="" height="156px">
-      <div class="box-input">
-       <button> <img src="../public/search.svg" alt="" class="search-button"></button>
-        <input type="text" placeholder="Pesquisar">
-        <button id="filter-button"><img src="../public/funnel.svg" alt="" class="funnel-button"></button>
+<body>
+  <header>
+    <div class="header-logo">
+      <h1>VA</h1>
+      <h4>TURISTANDO</h4>
+    </div>
+    <div class="header-searchbar">
+      <input type="text" placeholder="Pesquisar" class="searchbar">
+      <span>
+        <img src="./public/search.svg" class="searchBtn" alt="">
+      </span>
+    </div>
+
+    <!-- <div class="filter">
+      <img src="./public/funnel.svg" onclick="handleFilter()" alt="">
+      <div class="filter-modal">
+        <ul class="filter-options">
+          <li><a href="#">Parques</a></li>
+          <li><a href="#">Aventuras</a></li>
+          <li><a href="#">Ar Livre</a></li>
+        </ul>
       </div>
-    </header>
-    <section>
-      <h2>CATEGORIAS</h2>
-      <div class="wrapper-categorys">
-        <div class="item"><span>RESTAURANTES</span></div>
-        <div class="item"><span>TURISMO</span></div>
-        <div class="item"><span>HOSPEDAGENS</span></div>
-        <div class="item"><span>PARQUES</span></div>
-        <div class="item"><span>LUGARES</span></div>
-        <div class="item"><span>QUIOSQUES</span></div>
-      </div>
-    </section>
-    <section class="cards">
-      <div class="card" >
-        <img src="https://sebrae.com.br/Sebrae/Portal%20Sebrae/UFs/MS/Anexos/2021/restaurantes%20dois%20em%20um.jpg" class="card-img-top" alt="...">
-        <div class="card-body">
-         <div class="descript-local">
-          <h5 class="card-title">Nome do lugar</h5>
-          <span class="descript-local-closed">FECHADO</span>
-         </div>
-         <div class="descript-distance">
-          <span>20,02KM</span>
-          <img src="../public/local.svg" alt="">
-          <img src="../public/heart.svg" alt="">
-         </div>
-        </div>
-      </div>
-      <div class="card" >
-        <img src="https://img.freepik.com/fotos-premium/restaurante-moderno-no-luxuoso-hotel_63176-468.jpg?w=2000" class="card-img-top" alt="...">
-        <div class="card-body">
-         <div class="descript-local">
-          <h5 class="card-title">Nome do lugar</h5>
-          <span class="descript-local-open">ABERTO</span>
-         </div>
-         <div class="descript-distance">
-          <span>20,02KM</span>
-          <img src="../public/local.svg" alt="">
-          <img src="../public/heart.svg" alt="">
-         </div>
-        </div>
-      </div>
-      <div class="card" >
-        <img src="https://mercadoeconsumo.com.br/wp-content/uploads/2023/10/restaurante.jpg" class="card-img-top" alt="...">
-        <div class="card-body">
-         <div class="descript-local">
-          <h5 class="card-title">Nome do lugar</h5>
-          <span class="descript-local-open">ABERTO</span>
-         </div>
-         <div class="descript-distance">
-          <span>20,02KM</span>
-          <img src="../public/local.svg" alt="">
-          <img src="../public/heart.svg" alt="">
-         </div>
-        </div>
-      </div>
-    </section>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="assets/javascript/lugares.js"></script>
+    </div> -->
+  </header>
+
+  <div class="categorias">
+    <h4>CATEGORIAS</h4>
+    <div class="options-category">
+      <ul>
+        <li class="options">
+          Parques
+        </li>
+        <li class="options">
+          Aventuras
+        </li>
+        <li class="options">
+          Ar livre
+        </li>
+      </ul>
+    </div>
+  </div>
+  <section>
+    <div class="cards">
+    </div>
+    </div>
+  </section>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="assets/javascript/lugares.js"></script>
 </body>
+
 </html>
