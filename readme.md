@@ -19,3 +19,24 @@ O projeto está organizado da seguinte forma:
 1. Faça o download ou clone este repositório em sua máquina local.
    ```bash
    git clone https://github.com/seu-usuario/vai-aonde-capixaba.git
+
+2. Abra o arquivo index.html e veja o projeto em ação
+
+## Tecnologias Utilizadas
+
+
+- HTML
+- CSS
+- JavaScript
+- Fetch API
+
+
+## Contribuição
+
+
+Sinta-se à vontade para contribuir com melhorias, correções de bugs ou novas funcionalidades. Crie um fork do repositório, faça as alterações e envie uma pull request.
+
+# Licença
+
+
+Projeto administrado por **Jean Carlos** & **VAI A ONDE CAPIXABA**. Todos os direitos reservados, Novembro de 2023.
