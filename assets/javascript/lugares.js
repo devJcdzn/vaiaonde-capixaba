@@ -90,8 +90,8 @@ async function exibirLugares() {
       lugares.latitude,
       lugares.longitude, "K")}Km
           </span>
-          <img src="./public/heart.svg" alt="">
-          <img src="./public/local.svg" alt="">
+          <img src="./public/heart-outline.svg" alt="">
+          <img src="./public/location-sharp.svg" alt="">
         </div>
       </div>
     </div>
