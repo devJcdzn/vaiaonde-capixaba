@@ -75,27 +75,27 @@ async function exibirLugares() {
   const data = await getLugares();
   data.forEach((lugares, index) => {
     cardSections.innerHTML += `
-    <div class="card ${lugares.categoria.toLowerCase()}" key=${index}>
-    <img src=${lugares.capa} alt="">
-    <div class="card-infos">
-      <div class="left-infos">
-        <h2 class="title">${lugares.nome}</h2>
-        <span>Aberto agora</span>
-      </div>
-      <div class="right-infos">
-        <div class="card-items">
-          <span>${distance(
-      coordinates.lat,
-      coordinates.long,
-      lugares.latitude,
-      lugares.longitude, "K")}Km
-          </span>
-          <img src="./public/heart-outline.svg" alt="">
-          <img src="./public/location-sharp.svg" alt="">
+    <div class="card ${lugares.categoria}" key=${index}>
+        <div class="top-card">
+            <img class="card-banner" src=${lugares.capa} alt="">
         </div>
-      </div>
-    </div>
-  </div>`
+        <div class="bottom-card">
+          <div class="left-infos">
+            <h2 class="title">${lugares.nome}</h2>
+            <span class="status">Aberto agora</span>
+          </div>
+          <div class="right-infos">
+            <span class="distan">${distance(
+              coordinates.lat,
+              coordinates.long,
+              lugares.latitude,
+              lugares.longitude, "K")}KM
+              </span>
+            <img src="./public/location-sharp.svg" alt="">
+            <img src="./public/heart-outline.svg" alt="">
+          </div>
+        </div>
+      </div>`
   })
 
   const cards = document.querySelectorAll('.card');
