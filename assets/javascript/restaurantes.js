@@ -1,6 +1,86 @@
 const urlAPI = 'https://vaiaondecapixaba.com.br/api/restaurantes/';
 const cardSections = document.querySelector('.cards');
 
+var data = new Date();
+var dia = data.getDay();
+var hora = data.toLocaleTimeString();
+
+// checar dia hora
+function statusPlace(diaAtual, horaAtual, obj) {
+  let open = false
+  if (diaAtual == 0) {
+    if (horaAtual > `${obj.abrirDomingo}:00` && horaAtual < `${obj.fecharDomingo}:00`) {
+      open = true;
+      return "Aberto Agora"
+    } else {
+      open = false;
+      return "Fechado"
+    }
+  }
+
+  else if (diaAtual == 1) {
+    if (horaAtual > `${obj.abrirSegunda}:00` && horaAtual < `${obj.fecharSegunda}:00`) {
+      open = true;
+      return "Aberto Agora"
+    } else {
+      open = false;
+      return "Fechado"
+    }
+  }
+
+  else if (diaAtual == 2) {
+    if (horaAtual > `${obj.abrirTerca}:00` && horaAtual < `${obj.fecharTerca}:00`) {
+      open = true;
+      return "Aberto Agora"
+    } else {
+      open = false
+      return "Fechado"
+    }
+  }
+
+  else if (diaAtual == 3) {
+    if (horaAtual > `${obj.abrirQuarta}:00` && horaAtual < `${obj.fecharQuarta}:00`) {
+      open = true;
+      return "Aberto Agora"
+    } else {
+      open = false;
+      return "Fechado"
+    }
+  }
+
+  else if (diaAtual == 4) {
+    if (horaAtual > `${obj.abrirQuinta}:00` && horaAtual < `${obj.fecharQuinta}:00`) {
+      open = true;
+      return "Aberto Agora"
+    } else {
+      open = false;
+      return "Fechado"
+    }
+  }
+
+  else if (diaAtual == 5) {
+    if (horaAtual > `${obj.abrirSexta}:00` && horaAtual < `${obj.fecharSexta}:00`) {
+      open = true;
+      return "Aberto Agora"
+    } else {
+      open = false;
+      return "Fechado"
+    }
+  }
+
+  else if (diaAtual == 6) {
+    if (horaAtual > `${obj.abrirSabado}:00` && horaAtual < `${obj.fecharSabado}:00`) {
+      open = true;
+      return "Aberto Agora"
+    } else {
+      open = false;
+      return "Fechado"
+    }
+  }
+
+}
+
+
 // LoacationUser
 
 async function getLocatioinUser() {
@@ -50,6 +130,10 @@ async function getRestaurantes() {
   return data;
 }
 
+function redirect(res) {
+  window.location.href = `restaurante.html?id=${res}`;
+}
+
 async function exibirRestaurantes() {
   const coordinates = await getLocatioinUser();
   const data = await getRestaurantes();
@@ -63,38 +147,40 @@ async function exibirRestaurantes() {
   data.forEach(rest => {
 
     cardSections.innerHTML += `
-    <div class="card ${rest.categoria.toLowerCase()}">
-    <div class="top-card">
-        <div class="voucher ${temCupom(rest.temCupom)} ">
-          <img class="voucher-img" src="./public/bookmark-svgrepo-com.svg" alt="">
-          <span class="voucher-span">Cupom On</span>
+      <div class="card ${rest.categoria.toLowerCase()}" onclick="redirect(${rest.id})">
+        <div class="top-card">
+            <div class="voucher ${temCupom(rest.temCupom)} ">
+              <img class="voucher-img" src="./public/bookmark-svgrepo-com.svg" alt="">
+              <span class="voucher-span">Cupom On</span>
+            </div>
+            <img class="card-banner" src=${rest.capa} alt="">
         </div>
-        <img class="card-banner" src=${rest.capa} alt="">
-    </div>
-    <div class="bottom-card">
-      <div class="left-infos">
-        <h2 class="title">${rest.nome}</h2>
-        <span class="status">Aberto agora</span>
+        <div class="bottom-card">
+          <div class="left-infos">
+            <h2 class="title">${rest.nome}</h2>
+            <span class="status">${statusPlace(dia, hora, rest)}</span>
+          </div>
+          <div class="right-infos">
+            <span class="distance">${distance(
+              coordinates.lat,
+              coordinates.long,
+              rest.latitude,
+              rest.longitude, "K")}KM
+            </span>
+            <img src="./public/location-sharp.svg" alt="">
+            <img src="./public/heart-outline.svg" alt="">
+          </div>
+        </div>
       </div>
-      <div class="right-infos">
-        <span class="distance">${distance(
-      coordinates.lat,
-      coordinates.long,
-      rest.latitude,
-      rest.longitude, "K")}KM
-        </span>
-        <img src="./public/location-sharp.svg" alt="">
-        <img src="./public/heart-outline.svg" alt="">
-      </div>
-    </div>
-  </div>
     `
   });
+
 
   const cards = document.querySelectorAll('.card');
   const search = document.querySelector('.searchbar');
   const searchBtn = document.querySelector('.searchBtn');
   const categryBtn = document.querySelectorAll('.options');
+
 
   function filterCards() {
     if (search != '') {
@@ -135,6 +221,14 @@ async function exibirRestaurantes() {
         }
       });
     })
+  })
+
+  const spanStatus = document.querySelectorAll('.status');
+  spanStatus.forEach(span => {
+    let status = span.textContent;
+    if (status === 'Fechado') {
+      span.classList.add('closed');
+    }
   })
 }
 

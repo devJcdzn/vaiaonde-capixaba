@@ -5,6 +5,85 @@ const search = document.querySelector('.searchbar');
 const searchBtn = document.querySelector('.searchBtn');
 const categryBtn = document.querySelectorAll('.options');
 
+var data = new Date();
+var dia = data.getDay();
+var hora = data.toLocaleTimeString();
+
+// checar dia hora
+function statusPlace(diaAtual, horaAtual, obj) {
+  let open = false
+  if (diaAtual == 0) {
+    if (horaAtual > `${obj.abrirDomingo}:00` && horaAtual < `${obj.fecharDomingo}:00`) {
+      open = true;
+      return "Aberto Agora"
+    } else {
+      open = false;
+      return "Fechado"
+    }
+  }
+
+  else if (diaAtual == 1) {
+    if (horaAtual > `${obj.abrirSegunda}:00` && horaAtual < `${obj.fecharSegunda}:00`) {
+      open = true;
+      return "Aberto Agora"
+    } else {
+      open = false;
+      return "Fechado"
+    }
+  }
+
+  else if (diaAtual == 2) {
+    if (horaAtual > `${obj.abrirTerca}:00` && horaAtual < `${obj.fecharTerca}:00`) {
+      open = true;
+      return "Aberto Agora"
+    } else {
+      open = false
+      return "Fechado"
+    }
+  }
+
+  else if (diaAtual == 3) {
+    if (horaAtual > `${obj.abrirQuarta}:00` && horaAtual < `${obj.fecharQuarta}:00`) {
+      open = true;
+      return "Aberto Agora"
+    } else {
+      open = false;
+      return "Fechado"
+    }
+  }
+
+  else if (diaAtual == 4) {
+    if (horaAtual > `${obj.abrirQuinta}:00` && horaAtual < `${obj.fecharQuinta}:00`) {
+      open = true;
+      return "Aberto Agora"
+    } else {
+      open = false;
+      return "Fechado"
+    }
+  }
+
+  else if (diaAtual == 5) {
+    if (horaAtual > `${obj.abrirSexta}:00` && horaAtual < `${obj.fecharSexta}:00`) {
+      open = true;
+      return "Aberto Agora"
+    } else {
+      open = false;
+      return "Fechado"
+    }
+  }
+
+  else if (diaAtual == 6) {
+    if (horaAtual > `${obj.abrirSabado}:00` && horaAtual < `${obj.fecharSabado}:00`) {
+      open = true;
+      return "Aberto Agora"
+    } else {
+      open = false;
+      return "Fechado"
+    }
+  }
+  
+}
+
 // filter Button
 let filterActive = false;
 
@@ -82,7 +161,7 @@ async function exibirLugares() {
         <div class="bottom-card">
           <div class="left-infos">
             <h2 class="title">${lugares.nome}</h2>
-            <span class="status">Aberto agora</span>
+            <span class="status">${statusPlace(dia, hora, lugares)}</span>
           </div>
           <div class="right-infos">
             <span class="distan">${distance(
@@ -99,6 +178,14 @@ async function exibirLugares() {
   })
 
   const cards = document.querySelectorAll('.card');
+
+  for (let card of cards) {
+    card.addEventListener('click', () => {
+      data.forEach(lugar => {
+        window.location.href = "restaurante.html"
+      })
+    })
+  }
 
   function filterCards() {
     if (search != '') {
@@ -139,8 +226,15 @@ async function exibirLugares() {
         }
       });
     } )
-  })
-  
+  });
+
+  const spanStatus = document.querySelectorAll('.status');
+  spanStatus.forEach(span => {
+    let status = span.textContent;
+    if (status === 'Fechado') {
+      span.classList.add('closed');
+    }
+  });
 }
 
 window.addEventListener('load', exibirLugares());
