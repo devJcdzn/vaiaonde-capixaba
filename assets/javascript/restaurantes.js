@@ -138,4 +138,4 @@ async function exibirRestaurantes() {
   })
 }
 
-// window.addEventListener('load', exibirRestaurantes);
+window.addEventListener('load', exibirRestaurantes);

@@ -75,7 +75,7 @@ async function exibirLugares() {
   const data = await getLugares();
   data.forEach((lugares, index) => {
     cardSections.innerHTML += `
-    <div class="card ${lugares.categoria}" key=${index}>
+    <div class="card ${lugares.categoria.toLowerCase()}" key=${index}>
         <div class="top-card">
             <img class="card-banner" src=${lugares.capa} alt="">
         </div>
@@ -132,7 +132,7 @@ async function exibirLugares() {
   categryBtn.forEach(btn => {
     btn.addEventListener('click', () => {
       cards.forEach(card => {
-        if (card.classList[1].includes(btn.classList[1])) {
+        if (btn.classList[1].includes(card.classList[1])) {
           card.style.display = 'flex';
         } else {
           card.style.display = 'none';
