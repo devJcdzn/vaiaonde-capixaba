@@ -318,11 +318,10 @@ article {
 
 
 .gird-section {
+  width: 100%;
   display: flex;
-  justify-content: space-between;
   align-items: center;
-  height: 16vh;
-  gap: .8rem;
+  justify-content: space-between;
   border-radius: 8px;
   grid-column-start: 1;
   grid-column-end: 4;
@@ -334,10 +333,40 @@ article {
   font-family: 'Bebas Neue', sans-serif;
 }
 
-.gird-section img {
-  padding: .8rem;
-  margin-right: .8rem;
-  max-height: 100%;
+.grid-left-content {
+  margin-left: .5rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: .2rem;
+  width: 60%;
+  height: 100%;
+}
+
+.grid-left-content h1 {
+  font-size: 22px;
+  margin: 0;
+  font-weight: bold;
+}
+
+.grid-left-content p {
+  margin: 0;
+  font-size: 8px;
+  font-weight: 800;
+  text-transform: uppercase;
+}
+
+.grid-right-content {
+  width: 50%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.grid-right-content img {
+  width: 60%;
+  /* height: 80%; */
 }
 
 .gird-aside {
@@ -365,14 +394,6 @@ article {
   transform: translateY(-10px);
 }
 
-.text-grid-section-comer,
-.text-grid-section-visita {
-  height: 100%;
-  width: 65%;
-  padding: 5px;
-  line-height: 15px;
-  transform: translate(1%, 25%);
-}
 
 .text-grid-section-comer h1,
 .text-grid-section-visita h1 {
@@ -385,6 +406,7 @@ article {
 .text-grid-section-visita p {
   font-family: 'Nunito Sans', sans-serif;
   font-weight: 800;
+  margin: 0;
   text-transform: uppercase;
   font-size: .8rem;
 }
@@ -434,34 +456,5 @@ article {
     height: 18vh;
   }
 
-  .text-grid-section-comer,
-  .text-grid-section-visita {
-    padding: 0;
-    margin-left: 1rem;
-    width: 70%;
-    height: 100%;
-    transform: translate(1%, 18%);
-  }
-
-  .text-grid-section-comer h1,
-  .text-grid-section-visita h1 {
-    font-size: 22px;
-    line-height: 16px;
-  }
-
-  .text-grid-section-comer p,
-  .text-grid-section-visita p {
-    font-weight: 900;
-    text-transform: uppercase;
-    line-height: 13px;
-    font-size: 8px;
-  }
-
-  .gird-section img {
-    width: 30%;
-    margin: 0;
-    transform: translate(-8%, -1%);
-    height: auto;
-  }
 
 }
