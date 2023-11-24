@@ -1,4 +1,4 @@
-var urlAPI = "https://vaiaondecapixaba.com.br/api/restaurantes/"
+var urlAPI = "https://vaiaondecapixaba.com.br/api/lugares/"
 let headers = new Headers();
 
 headers.append('Content-Type', 'application/json');
@@ -152,57 +152,57 @@ function getStatus() {
 
         if (dia == 0) {
           if (hora > `${rest.abrirDomingo}:00` && hora < `${rest.fecharDomingo}:00`) {
-            statusSpan.textContent = "Restaurante Aberto";
+            statusSpan.textContent = "Aberto";
           } else {
-            statusSpan.textContent = "Restaurante Fechado";
+            statusSpan.textContent = "Fechado";
           }
         }
 
         else if (dia == 1) {
           if (hora > `${rest.abrirSegunda}:00` && hora < `${rest.fecharSegunda}:00`) {
-            statusSpan.textContent = "Restaurante Aberto";
+            statusSpan.textContent = "Aberto";
           } else {
-            statusSpan.textContent = "Restaurante Fechado";
+            statusSpan.textContent = "Fechado";
           }
         }
 
         else if (dia == 2) {
           if (hora > `${rest.abrirTerca}:00` && hora < `${rest.fecharTerca}:00`) {
-            statusSpan.textContent = "Restaurante Aberto";
+            statusSpan.textContent = "Aberto";
           } else {
-            statusSpan.textContent = "Restaurante Fechado";
+            statusSpan.textContent = "Fechado";
           }
         }
 
         else if (dia == 3) {
           if (hora > `${rest.abrirQuarta}:00` && hora < `${rest.fecharQuarta}:00`) {
-            statusSpan.textContent = "Restaurante Aberto";
+            statusSpan.textContent = "Aberto";
           } else {
-            statusSpan.textContent = "Restaurante Fechado";
+            statusSpan.textContent = "Fechado";
           }
         }
 
         else if (dia == 4) {
           if (hora > `${rest.abrirQuinta}:00` && hora < `${rest.fecharQuinta}:00`) {
-            statusSpan.textContent = "Restaurante Aberto";
+            statusSpan.textContent = "Aberto";
           } else {
-            statusSpan.textContent = "Restaurante Fechado";
+            statusSpan.textContent = "Fechado";
           }
         }
 
         else if (dia == 5) {
           if (hora > `${rest.abrirSexta}:00` && hora < `${rest.fecharSexta}:00`) {
-            statusSpan.textContent = "Restaurante Aberto";
+            statusSpan.textContent = "Aberto";
           } else {
-            statusSpan.textContent = "Restaurante Fechado";
+            statusSpan.textContent = "Fechado";
           }
         }
 
         else if (dia == 6) {
           if (hora > `${rest.abrirSabado}:00` && hora < `${rest.fecharSabado}:00`) {
-            statusSpan.textContent = "Restaurante Aberto";
+            statusSpan.textContent = "Aberto";
           } else {
-            statusSpan.textContent = "Restaurante Fechado";
+            statusSpan.textContent = "Fechado";
           }
         }
       })

@@ -110,7 +110,7 @@ header {
 /* --- Sobre o restaurante */
 
 .sobre-restaurante {
-  background: var(--colorItens);
+  background: var(--background-color);
   margin-bottom: 1.8rem;
   padding: 1.975rem;
   padding-bottom: 3rem;
@@ -122,7 +122,7 @@ header {
 .info-restaurante {
   display: flex;
   flex-direction: column;
-  gap: .4rem;
+  gap: .8rem;
   width: 50%;
 }
 
@@ -130,7 +130,7 @@ header {
   margin: 0;
   font-weight: 900;
   font-size: 20px;
-  color: #000;
+  color: var(--colorItens);
 }
 
 .info-restaurante p {
@@ -140,7 +140,7 @@ header {
   opacity: .7;
   margin: 0;
   padding: 0;
-  color: #000;
+  color: var(--colorItens);
 }
 
 .distanc-restaurante {
@@ -154,17 +154,19 @@ header {
 .distanc-restaurante span {
   font-weight: 800;
   font-size: 18px;
-  color: #000;
+  color: var(--colorItens);
 }
 
 .distanc-restaurante img {
   width: 25px;
   height: 25px;
+  padding: 2px;
   background-color: #FEB800;
   border-radius: 100%;
 }
 
 .button-restaurante {
+  text-transform: uppercase;
   width: 14rem;
   padding: 0.5rem;
   font-weight: 800;
@@ -176,13 +178,9 @@ header {
   margin-bottom: 2rem;
 }
 
-.status {
-  text-transform: uppercase;
-  background: var(--colorClosed);
-}
-
 .horarios-restaurante {
   margin: 1rem 0;
+  color: var(--colorItens);
 }
 
 .horarios-restaurante ul {
@@ -191,7 +189,6 @@ header {
 
 .horarios-restaurante ul li {
   list-style: none;
-  color: #fff;
 }
 
 .horarios-restaurante ul li img {
@@ -200,14 +197,12 @@ header {
 
 .horarios-restaurante h5,
 h6 {
-  color: #fff;
   font-weight: 700;
   text-align: center;
 }
 
 .horarios-restaurante h5 {
   font-weight: 800;
-  color: #fff;
   margin-bottom: .8rem;
 }
 
@@ -223,7 +218,6 @@ h6 {
 .info-estabelecimento ul li a {
   display: flex;
   gap: .4rem;
-  color: #fff;
 }
 
 .reels {
