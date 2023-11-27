@@ -81,14 +81,6 @@ headers.append('Accept', 'application/json');
 headers.append('Access-Control-Allow-Credentials', 'true');
 headers.append('GET', 'POST', 'OPTIONS', 'DELETE');
 
-if(localStorage.getItem('genero') == "F"){
-    perfil.src = "https://ondeirecomercapixaba.com.br/uploads/usuarios/feminino.png"
-} else if(localStorage.getItem('genero') == "M"){
-    perfil.src = "https://ondeirecomercapixaba.com.br/uploads/usuarios/masculino.png"
-} else {
-    perfil.src = "https://ondeirecomercapixaba.com.br/uploads/usuarios/outros.png"
-}
-
 nome.textContent = localStorage.getItem('nome');
 
 idade.textContent = localStorage.getItem('idade');

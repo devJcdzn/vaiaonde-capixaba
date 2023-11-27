@@ -25,10 +25,11 @@
         <label for="data_user">Data de nascimento</label>
         <input type="date" name="data_user" id="data_user">
 
-        <label for="gener_user">Gênero</label>
-        <select name="gener_user" id="gener_user">
-          <option value="Homem">Masculino</option>
-          <option value="Mulher">Feminino</option>
+        <label for="gender_user">Gênero</label>
+        <select name="gender_user" id="gender_user">
+          <option value="M">Masculino</option>
+          <option value="F">Feminino</option>
+          <option value="O">Outros</option>
         </select>
 
         <label for="city_user">Cidade</label>
@@ -42,8 +43,8 @@
 
         <div id="input_senha">
           <label for="password_user">Senha (8 a 12 caracteres)</label>
-          <input type="password" name="password_user" placeholder="Senha" maxlength="12" minlength="8" id="passwordUser">
-          <i class="bi bi-eye-fill" onclick="showPassword()" id="buttonPassword"></i>
+          <input type="password" name="password_user" placeholder="Senha" maxlength="12" minlength="8" id="password_user">
+          <i class="bi bi-eye-fill"  id="buttonPassword"></i>
         </div>
 
         <div id="input_senha">
@@ -51,7 +52,7 @@
           <input type="password" name="passwordConfirm_user" placeholder="Confirme sua senha"  id="confirmPassword">
         </div>
       </fieldset>
-      <input type="button" value="CRIAR CONTA" id="submit_button" onclick="validateCampos()">
+      <input type="submit" value="CRIAR CONTA" id="submit_button">
       <div class="links-user">
         <p><a href="login.html">Já tenho conta | Entrar</a></p>
       </div>

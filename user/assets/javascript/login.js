@@ -1,4 +1,5 @@
 let submitButton = document.getElementById('submit_button');
+const messageError = document.querySelector('.error-login');
 
 function showPassword() {
   const inputPassword = document.getElementById('input-password');
@@ -57,7 +58,10 @@ function entrar() {
         localStorage.setItem('assinatura', data.usuario.assinatura);
         window.location.href = "index.html"
       } else {
-        window.alert("Credenciais incorretas!");
+        setInterval(() => {
+          messageError.style.display = 'none';
+        }, 5000);
+        messageError.style.display = 'block';
       }
     })
 

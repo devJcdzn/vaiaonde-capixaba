@@ -1,0 +1,98 @@
+@import url('https://fonts.googleapis.com/css2?family=Nunito+Sans:opsz,wght@6..12,300;6..12,400;6..12,500;6..12,600;6..12,700;6..12,800;6..12,900&display=swap');
+
+* {
+  padding: 0;
+  margin: 0;
+  font-family: 'Nunito Sans', sans-serif;
+}
+
+form{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+}
+
+form input, form select{
+  margin-top: 5px;
+  width: 80%;
+  padding: 10px;
+  color: #000;
+  background-color: #FEB800;
+  font-weight: 1000;
+}
+
+:root {
+  --background-color: #000;
+  --colorItens: #FEB800;
+}
+
+body {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background-color: var(--background-color);
+  color: var(--colorItens);
+  text-align: center;
+}
+
+#button-back {
+  position: absolute;
+  left: 10px;
+  top: 3.5rem;
+}
+
+header h2{
+  background: var(--colorItens);
+  padding: 0.5rem;
+  color: #000;
+  text-transform: uppercase;
+  font-size: 24px;
+  font-weight: 900;
+}
+
+.info-assinatura {
+  max-width: 650px;
+  margin: 1rem;
+}
+
+.info-assinatura h2 {
+  margin-bottom: 0.6rem;
+}
+
+.info-assinatura h3 {
+  font-weight: 800;
+}
+
+.info-assinatura p {
+  margin-bottom: 0.6rem;
+}
+
+.info-assinatura button {
+  width: 90%;
+  border: none;
+  border: 1px solid #000;
+  border-radius: none;
+  background-color: var(--colorItens);
+  font-weight: 800;
+  margin: 0.5rem;
+  padding: 0.7rem;
+  font-size: 25px;
+}
+
+.info-assinatura button:focus {
+  transition: 0.3s;
+  border: 1px solid #FEB800;
+  background: #000;
+  color: #FEB800;
+}
+
+@media (min-width: 650px){
+  .info-assinatura {
+    margin: auto;
+  }
+
+  header {
+    margin-bottom: 1rem;
+  }
+}

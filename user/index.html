@@ -1,62 +1,52 @@
 <!DOCTYPE html>
 <html lang="pt-br">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
   <link rel="stylesheet" href="assets/styles/index.css">
-  <title>Esqueci minha senha</title>
+  <title>Minha Conta</title>
 </head>
+
 <body>
-  <a href="../index.html"><img src="../public/seta-esquerda.png" alt="icone-voltar" height="36px" id="icon-back"></a>
+  <header>
+    <a href="../index.html" class="back-btn"><img src="../public/seta-esquerda.png" alt="icone-voltar" id="icon-back"></a>
+    <a href="../index.html" class="logo-btn"><img src="../public/logo.png" alt="LOGO" id="logo" class="logo"></a>
+    <a href="../userAccountSettings/options/index.html" class="settings-btn"><img src="../public/settings-outline.svg" alt=""></a>
+  </header>
   <main>
-        <header>
-          <img src="../public/logo.png" height="66px" alt="LOGO" id="logo">
-        </header>
-        <h1 class="title-page">MEU PERFIL</h1>
-          <section>
-            <img id="user-img" src="../public/user.png" alt="" height="156px">
-            <h2 id="name-user">Nome Usuário</h2>
-            <div class="info-user">
-              <label for="data-nascimento">
-                <p>Data de nascimento:</p>
-                <span id="data-nascimento">DD/MM/AAAA</span>
-              </label>
-              <label for="email-user">
-                <p>E-mail:</p>
-                <span id="email-user">user@gmail.com</span>
-              </label>
-              <label for="telefone-user">
-                <p>Telefone</p>
-                <span id="telefone-user">(00) 00000-0000</span>
-              </label>
-            </div>
-              <button class="use-cupom">USAR MEUS CUPONS</button>
-            <div class="buttons-conta">
-                <button onclick="logout()">
-                  <div>
-                    <img src="../public/box-arrow-right-red.svg">
-                    <p>sair da conta</p>
-                  </div>
-                </button>
-                <button>
-                  <div onclick="deletarConta()">
-                    <img src="../public/trash-red.svg">
-                    <p>excluir conta</p>
-                  </div>
-                </button>
-            </div>
-          </section>
-          <footer>
-            <h3>ACOMPANHE AS NOVIDADES</h3>
-            <div class="icons-novidades">
-              <a href="https://www.instagram.com/vaiaondecapixaba/"><img src="../public/instagram.svg"></a>
-              <a href="https://www.tiktok.com/@vaiaondecapixaba"><img src="../public/tiktok.svg"></a>
-              <a href="https://www.kwai.com/@OndeComerCapixaba"><img src="../public/kwai.svg"></a>
-              <a href="https://www.youtube.com/@vaiaondecapixaba"><img src="../public/youtube.svg"></a>
-            </div>
-           </footer>
-        </main>
-        <script src="assets/javascript/index.js"></script>
+    <h1 class="title-page">MEU PERFIL</h1>
+    <section>
+      <img id="user-img" src="../public/user.png" alt="" height="156px">
+      <h2 id="name-user">Nome Usuário</h2>
+      <div class="info-user">
+        <label for="data-nascimento">
+          <p>Data de nascimento:</p>
+          <span id="data-nascimento">DD/MM/AAAA</span>
+        </label>
+        <label for="email-user">
+          <p>E-mail:</p>
+          <span id="email-user">user@gmail.com</span>
+        </label>
+        <label for="telefone-user">
+          <p>Telefone</p>
+          <span id="telefone-user">(00) 00000-0000</span>
+        </label>
+      </div>
+      <button class="use-cupom">USAR MEUS CUPONS</button>
+    </section>
+    <footer>
+      <h3>ACOMPANHE AS NOVIDADES</h3>
+      <div class="icons-novidades">
+        <a href="https://www.instagram.com/vaiaondecapixaba/"><img src="../public/instagram.svg"></a>
+        <a href="https://www.tiktok.com/@vaiaondecapixaba"><img src="../public/tiktok.svg"></a>
+        <a href="https://www.kwai.com/@OndeComerCapixaba"><img src="../public/kwai.svg"></a>
+        <a href="https://www.youtube.com/@vaiaondecapixaba"><img src="../public/youtube.svg"></a>
+      </div>
+    </footer>
+  </main>
+  <script src="assets/javascript/index.js"></script>
 </body>
+
 </html>

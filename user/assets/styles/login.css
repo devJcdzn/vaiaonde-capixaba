@@ -108,3 +108,9 @@ footer p {
 footer a {
   color: var(--colorItens);
 }
+
+.error-login {
+  display: none;
+  color: rgb(193, 0, 0);
+  margin-bottom: .5rem;
+}
