@@ -120,6 +120,21 @@ async function getLocatioinUser() {
   });
 }
 
+function distance(lat1, lon1, lat2, lon2, unit) {
+  const radlat1 = Math.PI * lat1 / 180;
+  const radlat2 = Math.PI * lat2 / 180;
+  const radlon1 = Math.PI * lon1 / 180;
+  const radlon2 = Math.PI * lon2 / 180;
+  const theta = lon1 - lon2;
+  const radtheta = Math.PI * theta / 180;
+  let dist = Math.sin(radlat1) * Math.sin(radlat2) + Math.cos(radlat1) * Math.cos(radlat2) * Math.cos(radtheta);
+  dist = Math.acos(dist);
+  dist = dist * 180 / Math.PI;
+  dist = dist * 60 * 1.1515;
+  if (unit === "K") { dist = dist * 1.609344 }
+  if (unit === "N") { dist = dist * 0.8684 }
+  return dist.toFixed(2);
+}
 // ========== //
 
 
@@ -135,20 +150,10 @@ async function getCategorias() {
   return data;
 }
 
-function distance(lat1, lon1, lat2, lon2, unit) {
-  const radlat1 = Math.PI * lat1 / 180;
-  const radlat2 = Math.PI * lat2 / 180;
-  const radlon1 = Math.PI * lon1 / 180;
-  const radlon2 = Math.PI * lon2 / 180;
-  const theta = lon1 - lon2;
-  const radtheta = Math.PI * theta / 180;
-  let dist = Math.sin(radlat1) * Math.sin(radlat2) + Math.cos(radlat1) * Math.cos(radlat2) * Math.cos(radtheta);
-  dist = Math.acos(dist);
-  dist = dist * 180 / Math.PI;
-  dist = dist * 60 * 1.1515;
-  if (unit === "K") { dist = dist * 1.609344 }
-  if (unit === "N") { dist = dist * 0.8684 }
-  return dist.toFixed(2);
+
+
+function redirect(res) {
+  window.location.href = `lugar.html?id=${res}`;
 }
 
 async function exibirCategorias() {
@@ -172,7 +177,7 @@ async function exibirLugares() {
   const data = await getLugares();
   data.forEach((lugares, index) => {
     cardSections.innerHTML += `
-    <div class="card ${lugares.categoria.toLowerCase()}" key=${index}>
+    <div class="card ${lugares.categoria.toLowerCase()}" key=${index} onclick="redirect(${lugares.id})">
         <div class="top-card">
             <img class="card-banner" src=${lugares.capa} alt="">
         </div>
@@ -195,14 +200,16 @@ async function exibirLugares() {
       </div>`
   })
 
-  const cards = document.querySelectorAll('.card');
-  for (let card of cards) {
-    card.addEventListener('click', () => {
-      data.forEach(lugar => {
-        window.location.href = "restaurante.html"
-      })
-    })
-  }
+  // const cards = document.querySelectorAll('.card');
+  // for (let card of cards) {
+  //   card.addEventListener('click', () => {
+  //     data.forEach(lugar => {
+  //       window.location.href = `lugar.html?id=${lugares.id}`
+  //     })
+  //   })
+  // }
+  const categryBtn = document.querySelectorAll('.options');
+
 
   function filterCards() {
     if (search != '') {
@@ -232,14 +239,16 @@ async function exibirLugares() {
   searchBtn.addEventListener('click', filterCards);
 
   // filter buttons
-
-  const categryBtn = document.querySelectorAll('.options');
   categryBtn.forEach(btn => {
     btn.addEventListener('click', () => {
       cards.forEach(card => {
         if (btn.classList[1] === card.classList[1]) {
           card.style.display = 'flex';
-        } else {
+        }
+        else if (btn.classList[1] === 'todos') {
+          card.style.display = 'flex';
+        }
+        else {
           card.style.display = 'none';
         }
       });
@@ -257,5 +266,5 @@ async function exibirLugares() {
 }
 
 
-window.addEventListener('load', exibirCategorias);
+exibirCategorias();
 window.addEventListener('load', exibirLugares());

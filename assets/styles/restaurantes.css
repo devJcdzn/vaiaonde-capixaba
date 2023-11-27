@@ -153,8 +153,11 @@ header {
   padding: 0 .8rem;
   max-width: 100%;
   display: flex;
+  gap: .8rem;
   overflow-x: auto;
+  margin-bottom: 1rem;
 }
+
 
 .options-category::-webkit-scrollbar {
   display: none;
@@ -168,7 +171,6 @@ header {
   justify-content: space-around;
   display: flex;
   gap: 1.4rem;
-  margin-bottom: .8rem;
 }
 
 .options {
@@ -177,6 +179,7 @@ header {
   justify-content: center;
   line-height: 10px;
   height: 40px;
+  padding: 20px;
   width: 100px;
   border-radius: 1px;
   background-color: var(--colorItens);

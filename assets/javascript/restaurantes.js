@@ -1,4 +1,4 @@
-const urlAPI = 'https://vaiaondecapixaba.com.br/api/restaurantes/';
+const urlAPI = 'https://vaiaondecapixaba.com.br/api/';
 const cardSections = document.querySelector('.cards');
 
 var data = new Date();
@@ -125,13 +125,34 @@ function distance(lat1, lon1, lat2, lon2, unit) {
 // ========== //
 
 async function getRestaurantes() {
-  const response = await fetch(urlAPI);
+  const response = await fetch(urlAPI + 'restaurantes/');
+  const data = response.json();
+  return data;
+}
+
+async function getGategorias() {
+  const response = await fetch(urlAPI + 'categoriasRestaurantes/');
   const data = response.json();
   return data;
 }
 
 function redirect(res) {
   window.location.href = `restaurante.html?id=${res}`;
+}
+
+async function exibirCategorias() {
+  const data = await getGategorias();
+  const categoryList = document.querySelector('.options-category');
+  data.forEach(categoria => {
+    categoryList.innerHTML += `
+    <ul>
+        <li class="options ${categoria.nome.toLowerCase()}">
+          ${categoria.nome}
+        </li>
+        
+      </ul>
+    `
+  })
 }
 
 async function exibirRestaurantes() {
@@ -192,14 +213,14 @@ async function exibirRestaurantes() {
 
         if (!title.includes(filter)) {
           card.style.display = 'none';
+          search.value = '';
         }
         else {
-          card.style.display = 'flex'
+          card.style.display = 'flex';
+          search.value = '';
         }
       }
-    } else {
-
-    }
+    } else {}
   }
 
   document.addEventListener('keypress', function (e) {
@@ -216,7 +237,11 @@ async function exibirRestaurantes() {
       cards.forEach(card => {
         if (btn.classList[1].includes(card.classList[1])) {
           card.style.display = 'flex';
-        } else {
+        } 
+        else if (btn.classList[1] === 'todos') {
+          card.style.display = 'flex';
+        }
+        else {
           card.style.display = 'none';
         }
       });
@@ -232,4 +257,5 @@ async function exibirRestaurantes() {
   })
 }
 
+exibirCategorias();
 window.addEventListener('load', exibirRestaurantes);

@@ -156,6 +156,7 @@ header {
   max-width: 100%;
   overflow-x: scroll;
   padding: 0 .5rem;
+  margin-bottom: 1rem;
   gap: .8rem;
 }
 
@@ -183,13 +184,57 @@ header {
   
   text-transform: uppercase;
   font-weight: 700;
+  cursor: pointer;
   
   font-size: 10px;
   list-style: none;
 }
 
+.scroll {
+  position: relative;
+  display: flex;
+  align-items: center;
+  border: 1px solid #FEB800;
+  height: 12px;
+  width: 45px;
+  background: #000000;
+  border-radius: 100px;
+}
+
+.scroll-ball {
+  position: absolute;
+  height: 6px;
+  width: 6px;
+  background: #FEB800;
+  border-radius: 100%;
+  animation: scroll infinite 2s ease;
+}
+
+@keyframes scroll {
+  0% {
+    left: 5px;
+  } 
+  50% {
+    left: 30px;
+  }
+  100% {
+    left: 5px;
+  }
+}
+
 section {
   padding: 2rem 2rem;
+}
+
+.nenhum-lugar {
+  display: none;
+  color: var(--colorItens);
+  font-size: 14px;
+  font-weight: 800;
+}
+
+.nenhum-lugar.active{
+  display: block;
 }
 
 .cards {

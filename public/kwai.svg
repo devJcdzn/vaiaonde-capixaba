@@ -1,12 +1,12 @@
 <?xml version="1.0"?>
-<svg fill="#fff" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
-  <path clip-rule="#fff"
+<svg fill="#FEB800" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
+  <path clip-rule="#FEB800"
     d="M19 11.5C20.6569 11.5 22 12.8431 22 14.5V19.5C22 21.1569 20.6569 22.5 19 22.5H11C9.34315 22.5 8 21.1569 8 19.5V14.5C8 12.8431 9.34315 11.5 11 11.5H19Z"
-    fill="#fff" fill-rule="#fff" />
-  <path clip-rule="#fff"
+    fill="#FEB800" fill-rule="#FEB800" />
+  <path clip-rule="#FEB800"
     d="M2 13.809C2 12.6939 3.17347 11.9687 4.17082 12.4674L9.44721 15.1056C9.786 15.275 10 15.6212 10 16V18C10 18.3788 9.786 18.725 9.44721 18.8944L4.17082 21.5326C3.17347 22.0313 2 21.3061 2 20.191V13.809Z"
-    fill="#fff" fill-rule="#fff" />
-  <path clip-rule="#fff"
+    fill="#FEB800" fill-rule="#FEB800" />
+  <path clip-rule="#FEB800"
     d="M10.5 1C7.73858 1 5.5 3.23858 5.5 6C5.5 8.76142 7.73858 11 10.5 11C11.988 11 13.3242 10.35 14.2401 9.31849C14.9652 10.3363 16.1551 11 17.5 11C19.7091 11 21.5 9.20914 21.5 7C21.5 4.79086 19.7091 3 17.5 3C16.5635 3 15.7022 3.32182 15.0206 3.8609C14.2189 2.16963 12.496 1 10.5 1Z"
-    fill="#fff" fill-rule="#fff" />
+    fill="#FEB800" fill-rule="#FEB800" />
 </svg>
