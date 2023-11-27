@@ -138,6 +138,7 @@ header {
   width: 100%;
   display: flex;
   align-items: center;
+  justify-content: center;
   flex-direction: column;
 }
 
@@ -149,28 +150,42 @@ header {
   font-family: 'Nunito Sans', sans-serif;
 }
 
+.options-category {
+  display: flex;
+  justify-content: flex-start;
+  max-width: 100%;
+  overflow-x: scroll;
+  padding: 0 .5rem;
+  gap: .8rem;
+}
+
+.options-category::-webkit-scrollbar {
+  display: none;
+}
+
 .options-category ul {
   margin: 0;
   padding: 0;
-  list-style: none;
-  align-items: center;
-  justify-content: space-around;
-  display: flex;
-  gap: 1.4rem;
 }
 
 .options {
   display: flex;
   align-items: center;
   justify-content: center;
+
   line-height: 10px;
   height: 40px;
   width: 100px;
+  
+  padding: 20px;
   border-radius: 1px;
   background-color: var(--colorItens);
+  
   text-transform: uppercase;
   font-weight: 700;
+  
   font-size: 10px;
+  list-style: none;
 }
 
 section {

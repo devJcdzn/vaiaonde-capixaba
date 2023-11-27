@@ -5,6 +5,7 @@
 * {
   padding: 0;
   margin: 0;
+  box-sizing: border-box;
 }
 
 :root {
@@ -473,7 +474,6 @@ article {
     color: #000;
     border-radius: 25px;
     margin-right: 1rem;
-  
   }
   
   .card-img {
@@ -489,7 +489,8 @@ article {
   
   .info-card {
     height: 40%;
-    padding: 0 8px;
+    padding: 0 16px;
+    padding-bottom: 8px;
   }
   
   .info-card span {

@@ -1,9 +1,8 @@
-let urlAPI = 'https://vaiaondecapixaba.com.br/api/lugares/';
+let urlAPI = 'https://vaiaondecapixaba.com.br/api/';
 
 const cardSections = document.querySelector('.cards');
 const search = document.querySelector('.searchbar');
 const searchBtn = document.querySelector('.searchBtn');
-const categryBtn = document.querySelectorAll('.options');
 
 var data = new Date();
 var dia = data.getDay();
@@ -81,7 +80,7 @@ function statusPlace(diaAtual, horaAtual, obj) {
       return "Fechado"
     }
   }
-  
+
 }
 
 // filter Button
@@ -125,11 +124,16 @@ async function getLocatioinUser() {
 
 
 async function getLugares() {
-  const response = await fetch(urlAPI);
+  const response = await fetch(urlAPI + 'lugares/');
   const data = response.json();
   return data;
 }
 
+async function getCategorias() {
+  const response = await fetch(urlAPI + 'categoriasLugares/');
+  const data = response.json();
+  return data;
+}
 
 function distance(lat1, lon1, lat2, lon2, unit) {
   const radlat1 = Math.PI * lat1 / 180;
@@ -147,6 +151,20 @@ function distance(lat1, lon1, lat2, lon2, unit) {
   return dist.toFixed(2);
 }
 
+async function exibirCategorias() {
+  const data = await getCategorias();
+  const categoryList = document.querySelector('.options-category');
+  data.forEach(categoria => {
+    categoryList.innerHTML += `
+    <ul>
+        <li class="options ${categoria.nome.toLowerCase()}">
+          ${categoria.nome}
+        </li>
+        
+      </ul>
+    `
+  })
+}
 
 async function exibirLugares() {
   const coordinates = await getLocatioinUser();
@@ -165,10 +183,10 @@ async function exibirLugares() {
           </div>
           <div class="right-infos">
             <span class="distan">${distance(
-              coordinates.lat,
-              coordinates.long,
-              lugares.latitude,
-              lugares.longitude, "K")}KM
+      coordinates.lat,
+      coordinates.long,
+      lugares.latitude,
+      lugares.longitude, "K")}KM
               </span>
             <img src="./public/location-sharp.svg" alt="">
             <img src="./public/heart-outline.svg" alt="">
@@ -178,7 +196,6 @@ async function exibirLugares() {
   })
 
   const cards = document.querySelectorAll('.card');
-
   for (let card of cards) {
     card.addEventListener('click', () => {
       data.forEach(lugar => {
@@ -215,18 +232,20 @@ async function exibirLugares() {
   searchBtn.addEventListener('click', filterCards);
 
   // filter buttons
-  
+
+  const categryBtn = document.querySelectorAll('.options');
   categryBtn.forEach(btn => {
     btn.addEventListener('click', () => {
       cards.forEach(card => {
-        if (btn.classList[1].includes(card.classList[1])) {
+        if (btn.classList[1] === card.classList[1]) {
           card.style.display = 'flex';
         } else {
           card.style.display = 'none';
         }
       });
-    } )
+    })
   });
+
 
   const spanStatus = document.querySelectorAll('.status');
   spanStatus.forEach(span => {
@@ -237,4 +256,6 @@ async function exibirLugares() {
   });
 }
 
+
+window.addEventListener('load', exibirCategorias);
 window.addEventListener('load', exibirLugares());
