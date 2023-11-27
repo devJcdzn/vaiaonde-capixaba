@@ -215,9 +215,11 @@ async function exibirLugares() {
 
         if (!title.includes(filter)) {
           card.style.display = 'none';
+          // search.value = '';
         }
         else {
-          card.style.display = 'flex'
+          card.style.display = 'flex';
+          // search.value = '';
         }
       }
     } else {
@@ -236,7 +238,7 @@ async function exibirLugares() {
   categryBtn.forEach(btn => {
     btn.addEventListener('click', () => {
       cards.forEach(card => {
-        if (btn.classList[1].includes(card.classList[1])) {
+        if (btn.classList[1] === card.classList[1]) {
           card.style.display = 'flex';
         } 
         else if (btn.classList[1] === 'todos') {
