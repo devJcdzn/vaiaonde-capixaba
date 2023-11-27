@@ -175,9 +175,9 @@ async function exibirLugares() {
   const coordinates = await getLocatioinUser();
 
   const data = await getLugares();
-  data.forEach((lugares, index) => {
+  data.forEach((lugares) => {
     cardSections.innerHTML += `
-    <div class="card ${lugares.categoria.toLowerCase()}" key=${index} onclick="redirect(${lugares.id})">
+    <div class="card ${lugares.categoria.toLowerCase()}" onclick="redirect(${lugares.id})">
         <div class="top-card">
             <img class="card-banner" src=${lugares.capa} alt="">
         </div>
@@ -198,17 +198,11 @@ async function exibirLugares() {
           </div>
         </div>
       </div>`
-  })
-
-  // const cards = document.querySelectorAll('.card');
-  // for (let card of cards) {
-  //   card.addEventListener('click', () => {
-  //     data.forEach(lugar => {
-  //       window.location.href = `lugar.html?id=${lugares.id}`
-  //     })
-  //   })
-  // }
+  });
+  
   const categryBtn = document.querySelectorAll('.options');
+  const cards = document.querySelectorAll('.card');
+
 
 
   function filterCards() {
@@ -242,9 +236,9 @@ async function exibirLugares() {
   categryBtn.forEach(btn => {
     btn.addEventListener('click', () => {
       cards.forEach(card => {
-        if (btn.classList[1] === card.classList[1]) {
+        if (btn.classList[1].includes(card.classList[1])) {
           card.style.display = 'flex';
-        }
+        } 
         else if (btn.classList[1] === 'todos') {
           card.style.display = 'flex';
         }
