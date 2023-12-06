@@ -10,7 +10,7 @@ function logout() {
 
   if (confirmacao) {
       localStorage.setItem('usuario', 'deslogado');
-      window.location.href = "../../../user/login.html";
+      window.location.href = "../../user/login.html";
   }
 }
 
