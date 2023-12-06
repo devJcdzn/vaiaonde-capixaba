@@ -82,30 +82,31 @@ headers.append('Access-Control-Allow-Credentials', 'true');
 headers.append('GET', 'POST', 'OPTIONS', 'DELETE');
 
 let age = localStorage.getItem('idade');
-
-function formatAge(age) {
-    if (age.indexOf('-') !== -1) {
-        let formatedAge = age.replace(/\-/g, '');
-
-        const year = formatedAge.slice(0, 4);
-        const month = formatedAge.slice(4, 6);
-        const day = formatedAge.slice(6, 9);
-        
-        formatedAge = `${day}/${month}/${year}`;
-        
-        return formatedAge;
-    }
-}
-
 let tel = localStorage.getItem('telefone');
 
-function formatTel(tel) {
-    let ddd = tel.slice(0,2);
-    let firstPart = tel.slice(2, 7);
-    let secondPart = tel.slice(7, 11);
+function formatAge(age) {
+    let formatedAge = age.replace(/\-/g, '');
 
-    let formatedTel = `(${ddd}) ${firstPart}-${secondPart}`;
-    return formatedTel;
+    const year = formatedAge.slice(0, 4);
+    const month = formatedAge.slice(4, 6);
+    const day = formatedAge.slice(6, 9);
+
+    formatedAge = `${day}/${month}/${year}`;
+
+    return formatedAge;
+}
+
+function formatTel(tel) {
+    if (tel && tel.indexOf('null')) {
+        let ddd = tel.slice(0, 2);
+        let firstPart = tel.slice(2, 7);
+        let secondPart = tel.slice(7, 11);
+
+        let formatedTel = `(${ddd}) ${firstPart}-${secondPart}`;
+        return formatedTel;
+    } else {
+        return 'Não foi posível encontrar seu nmero de telefone.'
+    }
 }
 
 nome.textContent = localStorage.getItem('nome');
@@ -115,6 +116,7 @@ idade.textContent = formatAge(age);
 email.textContent = localStorage.getItem('email');
 
 telefone.textContent = formatTel(tel);
+
 
 if (localStorage.getItem('assinatura') == "0") {
     assinatura.textContent = "Você não faz parte do Vai Aonde Club";

@@ -50,11 +50,9 @@ document.getElementById('form-user').addEventListener('submit', function (e) {
     return newPhone;
   }
 
-  let data_format = new Date(age).toLocaleDateString('pt-br', { timeZone: 'UTC' });
-
   const userData = {
     nome: name,
-    idade: data_format,
+    idade: age,
     genero: gender,
     moradia: city,
     email: email,
