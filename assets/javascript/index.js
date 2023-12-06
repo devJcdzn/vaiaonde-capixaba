@@ -27,7 +27,7 @@ function logout() {
 
   if (confirmacao) {
     localStorage.setItem('usuario', 'deslogado');
-    window.location.href = "/";
+    window.location.href = "index.html";
   }
 }
 
