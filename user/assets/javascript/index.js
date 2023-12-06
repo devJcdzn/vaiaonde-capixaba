@@ -134,4 +134,4 @@ if (localStorage.getItem('assinatura') == "0") {
 }
 
 window.addEventListener('load', verificarLogin);
-window.addEventListener('load', verificarAssinatura)
+window.addEventListener('load', verificarAssinatura);
