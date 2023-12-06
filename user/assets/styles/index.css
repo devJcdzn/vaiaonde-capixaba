@@ -99,6 +99,7 @@ section {
 }
 
 .use-cupom {
+  cursor: pointer;
   background: var(--colorItens);
   border: none;
   padding: 1.4rem;

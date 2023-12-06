@@ -30,8 +30,7 @@ btnShowPass.addEventListener('click', () => {
 })
 
 
-let phone = document.getElementById('phone_user').value;
-$('#phone_user').mask("(99) 99999-9999");
+$('#phone_user').mask('(99) 99999-9999');
 
 document.getElementById('form-user').addEventListener('submit', function (e) {
   e.preventDefault();
@@ -40,17 +39,26 @@ document.getElementById('form-user').addEventListener('submit', function (e) {
   const age = document.getElementById('data_user').value;
   const gender = document.getElementById('gender_user').value;
   const city = document.getElementById('city_user').value;
+  let phone = document.getElementById('phone_user').value;
   const email = document.getElementById('email_user').value;
   let password = document.getElementById('password_user').value;
   let confirmPassword = document.getElementById('confirmPassword').value;
 
+  function removerMascara(tel) {
+    let newPhone = tel.replace(/\-/g, '').replace(/\(/g, '').replace(/\)/g, '').replace(/\ /g, '');
+    newPhone = parseInt(newPhone);
+    return newPhone;
+  }
+
+  let data_format = new Date(age).toLocaleDateString('pt-br', { timeZone: 'UTC' });
+
   const userData = {
     nome: name,
-    idade: age,
+    idade: data_format,
     genero: gender,
     moradia: city,
     email: email,
-    telefone: phone,
+    telefone: removerMascara(phone),
     senha: password,
   }
 
@@ -77,7 +85,7 @@ document.getElementById('form-user').addEventListener('submit', function (e) {
       .then(data => {
         window.alert(data['message']);
         if (data['result'] == true) {
-          window.location.href = 'login.html';
+          window.location.href = 'index.html';
         }
       })
 

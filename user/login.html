@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="pt-br">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,31 +8,45 @@
   <link rel="stylesheet" href="assets/styles/login.css">
   <title>Página Login</title>
 </head>
+
 <body>
   <a href="../index.html"><img src="../public/seta-esquerda.png" alt="icone-voltar" height="36px" id="icon-back"></a>
   <main>
-        <header>
-          <img src="../public/logo.png" height="100px" alt="LOGO" id="logo">
-          <h1>ENTRAR</h1>
-        </header>
-        
-          <section>
-            <span class="error-login">Credenciais incorretas.</span>
-            <label for="input-email">E-mail:</label>
-            <input type="email" name="input-email" id="input-email" maxlength="32">
-              <label for="input-password">Senha:</label>
-            <div id="password-inputId">
-              <input type="password" name="input-password" id="input-password"  maxlength="12">
-              <i class="bi bi-eye-fill" id="button-password" onclick="showPassword()"></i>
-            </div>
-          
-          </section>
-          <button onclick="entrar()">ENTRAR</button>
-          <footer>
-            <p>Ainda não tem uma conta? <a href="register.html">Crie aqui</a></p>
-            <a href="#"><p>Esqueci minha senha</p></a>
-          </footer>
-        </main>
-    <script src="assets/javascript/login.js"></script>
+    <header>
+      <img src="../public/logo.png" height="100px" alt="LOGO" id="logo">
+      <h1>ENTRAR</h1>
+    </header>
+
+    <section>
+      <span class="error-login">Credenciais incorretas.</span>
+      <label for="input-email">E-mail:</label>
+      <input 
+        type="email" 
+        name="input-email" 
+        id="input-email" 
+        placeholder="Seu e-mail"
+        maxlength="32">
+      <label for="input-password">Senha:</label>
+      <div id="password-inputId">
+        <input 
+        type="password" 
+        name="input-password" 
+        id="input-password" 
+        placeholder="Sua senha"
+        maxlength="12">
+        <i class="bi bi-eye-fill" id="button-password" onclick="showPassword()"></i>
+      </div>
+
+    </section>
+    <button onclick="entrar()">ENTRAR</button>
+    <footer>
+      <p>Ainda não tem uma conta? <a href="register.html">Crie aqui</a></p>
+      <a href="#">
+        <p>Esqueci minha senha</p>
+      </a>
+    </footer>
+  </main>
+  <script src="assets/javascript/login.js"></script>
 </body>
+
 </html>

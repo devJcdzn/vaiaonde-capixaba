@@ -114,3 +114,13 @@ footer a {
   color: rgb(193, 0, 0);
   margin-bottom: .5rem;
 }
+
+input::placeholder {
+  color: #000000;
+  opacity: .7;
+  letter-spacing: 1px;
+}
+
+i {
+  cursor: pointer;
+}

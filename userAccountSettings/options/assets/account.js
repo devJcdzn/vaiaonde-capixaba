@@ -8,6 +8,11 @@ function changeAccountInfo() {
   window.location.href = "./alterarinfo.html"
 }
 
+function logout() {
+  localStorage.setItem('usuario', 'deslogado');
+  window.location.href = "../../../index.html";
+}
+
 function deleteAccount() {
   const confirmacao = confirm("Tem certeza de que deseja excluir sua conta? Essa ação não pode ser desfeita.");
 
@@ -22,7 +27,7 @@ function deleteAccount() {
 
       .then(data => {
         if (data.result) {
-          window.location.href = "login.html";
+          window.location.href = "../../../index.html";
         } else {
           console.error(data.message);
         }

@@ -22,9 +22,13 @@ a {
   color: var(--colorItens);
 }
 
+input {
+  padding: 10px;
+}
+
 input::placeholder {
   color: #000000;
-  font-style: italic;
+  padding: 5px;
 }
 
 #button_back {
@@ -63,11 +67,24 @@ input::placeholder {
   margin-bottom: 0.5rem;
   border: none;
   background-color: var(--colorItens);
-  padding: 0.6rem;
+  padding: 0.8rem;
   border-radius: 20px;
   color: #000000;
   font-size: 1rem;
   font-weight: 700;
+}
+
+#gender_user {
+  appearance: none;
+  background-image: url('../../public/caret-down-outline.svg');
+  background-position: right 15px top 50%;
+  background-repeat: no-repeat;
+  background-size: 15px;
+  display: flex;
+  align-items: center;
+  width: 100%;
+  max-width: 620px;
+  padding: 1rem;
 }
 
 #input_senha {
@@ -96,6 +113,7 @@ input::placeholder {
 
 .links-user p {
   font-weight: 600;
+  margin: 1.8rem 0;
 }
 
 #submit_button {
