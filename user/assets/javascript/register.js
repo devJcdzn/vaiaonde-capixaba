@@ -27,8 +27,9 @@ btnShowPass.addEventListener('click', () => {
     confirmPasswordVal.type = 'password';
     btnShowPass.classList.replace('bi-eye-slash-fill', 'bi-eye-fill');
   }
-})
+});
 
+console.log(tel)
 
 $('#phone_user').mask('(99) 99999-9999');
 
