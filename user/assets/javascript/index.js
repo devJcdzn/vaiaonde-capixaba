@@ -85,15 +85,18 @@ let age = localStorage.getItem('idade');
 let tel = localStorage.getItem('telefone');
 
 function formatAge(age) {
-    let formatedAge = age.replace(/\-/g, '');
+    if (age) {
 
-    const year = formatedAge.slice(0, 4);
-    const month = formatedAge.slice(4, 6);
-    const day = formatedAge.slice(6, 9);
+        let formatedAge = age.replace(/\-/g, '');
 
-    formatedAge = `${day}/${month}/${year}`;
+        const year = formatedAge.slice(0, 4);
+        const month = formatedAge.slice(4, 6);
+        const day = formatedAge.slice(6, 9);
 
-    return formatedAge;
+        formatedAge = `${day}/${month}/${year}`;
+
+        return formatedAge;
+    }
 }
 
 function formatTel(tel) {
