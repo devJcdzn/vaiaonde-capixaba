@@ -29,7 +29,6 @@ btnShowPass.addEventListener('click', () => {
   }
 });
 
-console.log(tel)
 
 $('#phone_user').mask('(99) 99999-9999');
 
