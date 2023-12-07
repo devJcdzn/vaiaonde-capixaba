@@ -13,10 +13,6 @@ headers.append('Accept', 'application/json');
 headers.append('Access-Control-Allow-Credentials', 'true');
 headers.append('GET', 'POST', 'OPTIONS');
 
-
-
-
-
 document.getElementById("email-form").addEventListener("submit", function (event) {
   event.preventDefault();
   const email = document.querySelector('#email').value;
