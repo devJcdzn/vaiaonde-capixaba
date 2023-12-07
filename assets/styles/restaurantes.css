@@ -29,6 +29,7 @@ header {
 }
 
 .header-logo {
+  position: relative;
   margin: 0;
   margin-bottom: .875rem;
   display: flex;
@@ -227,10 +228,12 @@ header {
 @keyframes scroll {
   0% {
     left: 5px;
-  } 
+  }
+
   50% {
     left: 30px;
   }
+
   100% {
     left: 5px;
   }
@@ -365,14 +368,14 @@ section {
 
 @media (min-width: 760px) {
   header {
-    height: 28vh;
+    height: 35vh;
     display: flex;
     justify-content: center;
     flex-direction: column;
     align-items: center;
     color: var(--colorItens);
   }
-  
+
   .header-logo {
     margin: 0;
     margin-bottom: 1.575rem;
@@ -381,19 +384,19 @@ section {
     flex-direction: column;
     align-items: center;
   }
-  
+
   .header-logo h1 {
     line-height: 64px;
     font-size: 86px;
     font-weight: 900;
     margin-bottom: .4rem;
   }
-  
+
   .header-logo h4 {
     font-size: 24px;
     font-weight: 800;
   }
-  
+
   .header-searchbar {
     display: flex;
     align-items: center;
@@ -401,7 +404,7 @@ section {
     width: 60%;
     margin-bottom: .6rem;
   }
-  
+
   .header-searchbar span {
     height: 100%;
     width: 12%;
@@ -411,7 +414,7 @@ section {
     border-radius: 0 100px 100px 0;
     background-color: var(--colorItens);
   }
-  
+
   .searchbar {
     width: 60%;
     background: none;
@@ -421,7 +424,7 @@ section {
     border-radius: 100px 0 0 100px;
     padding: .4rem .8rem;
   }
-  
+
   .searchbar::placeholder {
     color: #fff;
     padding-left: .55rem;
@@ -429,7 +432,7 @@ section {
     font-size: 10px;
     font-family: inherit;
   }
-  
+
   .options-category {
     display: grid;
     grid-template-columns: repeat(5, 1fr);
@@ -450,7 +453,7 @@ section {
     align-items: flex-start;
     justify-content: center;
   }
-  
+
   .left-infos .title {
     margin: 0;
     font-size: 16px;
@@ -458,7 +461,7 @@ section {
     text-transform: uppercase;
     font-weight: 900;
   }
-  
+
   .left-infos .status {
     color: #000000;
     background-color: #29bf12;
@@ -469,11 +472,11 @@ section {
     font-size: 14px;
     text-align: center;
   }
-  
+
   .left-infos .status.closed {
     background-color: #e01e37;
   }
-  
+
   .right-infos {
     margin: 0;
     margin-right: .5rem;
@@ -484,13 +487,13 @@ section {
     gap: .5rem;
     width: 50%;
   }
-  
+
   .right-infos span {
     font-weight: 900;
     font-size: 16px;
     color: #000000;
   }
-  
+
   .right-infos img {
     width: 25px;
   }
