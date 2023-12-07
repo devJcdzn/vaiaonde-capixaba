@@ -5,6 +5,9 @@ var data = new Date();
 var dia = data.getDay();
 var hora = data.toLocaleTimeString();
 
+const backBtn = document.querySelector('#backBtn');
+backBtn.addEventListener('click', () => window.history.back());
+
 // checar dia hora
 function statusPlace(diaAtual, horaAtual, obj) {
   let open = false

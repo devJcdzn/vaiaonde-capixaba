@@ -4,6 +4,9 @@ const cardSections = document.querySelector('.cards');
 const search = document.querySelector('.searchbar');
 const searchBtn = document.querySelector('.searchBtn');
 
+const backBtn = document.querySelector('#backBtn');
+backBtn.addEventListener('click', () => window.history.back());
+
 var data = new Date();
 var dia = data.getDay();
 var hora = data.toLocaleTimeString();
