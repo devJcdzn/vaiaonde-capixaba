@@ -57,14 +57,14 @@ async function exibirRotas() {
   if (data.length > 0) {
     data.forEach((lugares) => {
       cardSections.innerHTML += `
-    <div class="card ${lugares.categoria.toLowerCase()}" onclick="redirect(${lugares.id})">
+    <div class="card" onclick="redirect(${lugares.id})">
         <div class="top-card">
             <img class="card-banner" src=${lugares.capa} alt="">
         </div>
         <div class="bottom-card">
           <div class="left-infos">
             <h2 class="title">${lugares.nome}</h2>
-            <span class="status">${statusPlace(dia, hora, lugares)}</span>
+            <span class="status">${lugares.cidade}</span>
           </div>
           <div class="right-infos">
             <span class="distan">${distance(

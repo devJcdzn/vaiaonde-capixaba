@@ -4,6 +4,10 @@ let urlAPI = 'https://vaiaondecapixaba.com.br/api/';
 const backBtn = document.querySelector('#backBtn');
 backBtn.addEventListener('click', () => window.history.back());
 
+var data = new Date();
+var dia = data.getDay();
+var hora = data.toLocaleTimeString();
+
 // Geolocation and distance
 async function getLocatioinUser() {
   return new Promise((resolve, reject) => {
@@ -48,31 +52,29 @@ async function getEvents() {
   return data;
 }
 
+function redirect(res) {
+  window.location.href = `evento.html?id=${res}`;
+}
+
 async function exibirEvents() {
   const coordinates = await getLocatioinUser();
 
   const data = await getEvents();
-  console.log(data);
 
   if (data.length > 0) {
-    data.forEach((lugares) => {
+    data.forEach((eventos) => {
       cardSections.innerHTML += `
-    <div class="card ${lugares.categoria.toLowerCase()}" onclick="redirect(${lugares.id})">
+    <div class="card ${eventos.categoria.toLowerCase()}" onclick="redirect(${eventos.id})">
         <div class="top-card">
-            <img class="card-banner" src=${lugares.capa} alt="">
+            <img class="card-banner" src=${eventos.capa} alt="">
         </div>
         <div class="bottom-card">
           <div class="left-infos">
-            <h2 class="title">${lugares.nome}</h2>
-            <span class="status">${statusPlace(dia, hora, lugares)}</span>
+            <h2 class="title">${eventos.nome}</h2>
+            <span class="status">${eventos.dia}</span>
           </div>
           <div class="right-infos">
-            <span class="distan">${distance(
-        coordinates.lat,
-        coordinates.long,
-        lugares.latitude,
-        lugares.longitude, "K")}KM
-              </span>
+            <span class="distan">${eventos.cidade.toUpperCase()}</span>
             <img src="./public/location-sharp.svg" alt="">
             <img src="./public/heart-outline.svg" alt="">
             </div>
