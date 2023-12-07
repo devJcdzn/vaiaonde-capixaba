@@ -16,6 +16,9 @@ const divSlide4 = document.getElementsByClassName('carousel-item')[3];
 
 const infoPlace = document.querySelector('.info-restaurante');
 
+const backBtn = document.querySelector('#backBtn');
+backBtn.addEventListener('click', () => window.history.back());
+
 var data = new Date();
 var dia = data.getDay();
 var hora = data.toLocaleTimeString();
