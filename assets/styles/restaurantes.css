@@ -19,6 +19,7 @@ body {
 }
 
 header {
+  position: relative;
   height: 30vh;
   display: flex;
   justify-content: center;
@@ -46,6 +47,15 @@ header {
 .header-logo h4 {
   font-size: 18px;
   font-weight: 800;
+}
+
+.back-arrow {
+  position: absolute;
+  height: 36px;
+  width: 36px;
+  top: 10vh;
+  left: 1.3rem;
+  transform: translateY(-50%);
 }
 
 .header-searchbar {
@@ -174,6 +184,7 @@ header {
 }
 
 .options {
+  cursor: pointer;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -186,6 +197,10 @@ header {
   text-transform: uppercase;
   font-weight: 700;
   font-size: 10px;
+}
+
+.options:hover {
+  background: #d69a04;
 }
 
 .scroll {
@@ -232,6 +247,7 @@ section {
 }
 
 .card {
+  cursor: pointer;
   position: relative;
   max-width: 400px;
   width: 100%;
