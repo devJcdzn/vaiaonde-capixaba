@@ -61,9 +61,15 @@ document.getElementById('form-user').addEventListener('submit', function (e) {
   }
 
   let data_user = new Date(age);
+  const input = document.querySelectorAll('input');
 
   if (password != confirmPassword) {
-    alert(' As senhas não coincidem.');
+    const passError = document.querySelector('.password-err');
+    passError.style.display = 'flex';
+    for (let i of input) {
+      i.addEventListener('focus', () => passError.style.display = 'none')
+    }
+
   } else if (data.getFullYear() - data_user.getFullYear() < 15) {
     alert('Sentimos muito, mas não é possível realizar o cadastro.')
   } else {

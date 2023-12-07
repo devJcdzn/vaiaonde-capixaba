@@ -58,10 +58,10 @@ function entrar() {
         localStorage.setItem('assinatura', data.usuario.assinatura);
         window.location.href = "index.html"
       } else {
-        setInterval(() => {
-          messageError.style.display = 'none';
-        }, 5000);
+        const input = document.querySelector('input');
+
         messageError.style.display = 'block';
+        input.addEventListener('focus', () => messageError.style.display = 'none');
       }
     })
 

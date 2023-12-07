@@ -59,6 +59,7 @@ section {
 }
 
 section label {
+  text-align: start;
   font-weight: 600;
   margin-bottom: 0.5rem;
 }
@@ -70,13 +71,14 @@ section input {
   border: none;
   outline: none;
   padding: 0.8rem;
-  text-align: center;
+  text-align: start;
   max-width: auto;
   font-size: 16px;
   font-weight: 600;
 }
 
 button {
+  cursor: pointer;
   margin-top: 0.5rem;
   font-size: 18px;
   background: var(--colorItens);
@@ -86,7 +88,7 @@ button {
   border: none;
   outline: none;
   padding: 0.6rem;
-  
+  transition: all .3s;
 }
 
 button:focus {
@@ -118,7 +120,7 @@ footer a {
 input::placeholder {
   color: #000000;
   opacity: .7;
-  letter-spacing: 1px;
+  text-align: start;
 }
 
 i {

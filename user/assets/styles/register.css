@@ -13,9 +13,9 @@
 }
 
 body {
-    -webkit-font-smoothing: antialiased;
-    background-color: var(--background-color);
-    color: var(--colorItens);
+  -webkit-font-smoothing: antialiased;
+  background-color: var(--background-color);
+  color: var(--colorItens);
 }
 
 a {
@@ -50,7 +50,7 @@ input::placeholder {
   font-weight: 800;
 }
 
-#form-user fieldset{
+#form-user fieldset {
   margin: 1rem;
   display: flex;
   flex-direction: column;
@@ -63,7 +63,8 @@ input::placeholder {
   font-weight: 700;
 }
 
-#form-user fieldset input, select {
+#form-user fieldset input,
+select {
   margin-bottom: 0.5rem;
   border: none;
   background-color: var(--colorItens);
@@ -102,7 +103,9 @@ input::placeholder {
   font-size: 23px;
 }
 
-#form-user:focus, input:focus, select:focus {
+#form-user:focus,
+input:focus,
+select:focus {
   outline: 0;
 }
 
@@ -114,6 +117,20 @@ input::placeholder {
 .links-user p {
   font-weight: 600;
   margin: 1.8rem 0;
+}
+
+.password-err {
+  display: none;
+  width: 100%;
+  justify-content: center;
+  margin-bottom: 1rem;
+  transition: all .3s;
+}
+
+.password-error {
+  width: 100%;
+  text-align: center;
+  color: red;
 }
 
 #submit_button {
@@ -144,7 +161,8 @@ input::placeholder {
     text-align: center;
   }
 
-  #form-user fieldset input, select {
+  #form-user fieldset input,
+  select {
     width: 600px;
   }
 }
