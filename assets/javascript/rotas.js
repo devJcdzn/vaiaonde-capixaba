@@ -48,6 +48,10 @@ async function getRotas() {
   return data;
 }
 
+function redirect(res) {
+  window.location.href = `rota.html?id=${res}`;
+}
+
 async function exibirRotas() {
   const coordinates = await getLocatioinUser();
 
@@ -83,5 +87,6 @@ async function exibirRotas() {
     cardSections.innerHTML += `<span class="event-null">Nenhuma rota disponível :(</span>`;
   }
 }
+
 
 window.addEventListener('load', exibirRotas);
