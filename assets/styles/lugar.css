@@ -58,6 +58,10 @@ header {
   justify-content: flex-start;
 }
 
+#backBtn {
+  cursor: pointer;
+}
+
 .back-btn img {
   width: 30px;
   margin-left: 1rem;
@@ -109,6 +113,7 @@ header {
   max-height: 500px;
   object-fit: cover;
 }
+
 /* --- Sobre o restaurante */
 
 .sobre-restaurante {
@@ -184,8 +189,7 @@ header {
   color: var(--colorItens);
 }
 
-.horarios-restaurante ul {
-}
+.horarios-restaurante ul {}
 
 .horarios-restaurante ul li {
   list-style: none;
@@ -239,9 +243,9 @@ h6 {
 
 .info-estabelecimento ul li a p {
   margin: 0;
-} 
+}
 
-.info-estabelecimento ul li a .img img{
+.info-estabelecimento ul li a .img img {
   width: 24px;
   height: 24px;
 }
@@ -266,6 +270,7 @@ h6 {
   margin: 1rem 0;
   text-align: center;
 }
+
 .endereco-restaurante img {
   width: 14px;
   margin-bottom: .8rem;
@@ -338,7 +343,18 @@ footer h5 {
   font-size: 12px;
 }
 
-@media (min-width: 760px){
+@media (min-width: 760px) {
+
+  .nav-list {
+    justify-content: space-around;
+  }
+
+  .nav-list li {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
   .sobre-restaurante {
     background: var(--background-color);
     display: flex;
@@ -347,21 +363,21 @@ footer h5 {
     justify-content: space-around;
     margin-bottom: 3.75rem;
   }
-  
+
   .info-restaurante {
     display: flex;
     flex-direction: column;
     gap: .8rem;
     width: 50%;
   }
-  
+
   .info-restaurante h1 {
     margin: 0;
     font-weight: 900;
     font-size: 28px;
     color: var(--colorItens);
   }
-  
+
   .info-restaurante p {
     font-weight: 800;
     font-size: 16px;
@@ -372,7 +388,7 @@ footer h5 {
     padding: 0;
     color: var(--colorItens);
   }
-  
+
   .distanc-restaurante {
     width: 50%;
     display: flex;
@@ -380,13 +396,13 @@ footer h5 {
     align-items: center;
     justify-content: flex-end;
   }
-  
+
   .distanc-restaurante span {
     font-weight: 800;
     font-size: 24px;
     color: var(--colorItens);
   }
-  
+
   .distanc-restaurante img {
     width: 25px;
     height: 25px;
@@ -408,7 +424,7 @@ footer h5 {
     margin: 2rem auto;
     color: var(--colorItens);
   }
-  
+
   .horarios-restaurante ul {
     display: flex;
     flex-direction: column;
@@ -421,17 +437,17 @@ footer h5 {
     list-style: none;
     font-size: 20px;
   }
-  
+
   .horarios-restaurante ul li img {
     width: 20px;
   }
-  
+
   .horarios-restaurante h5 {
     font-weight: 900;
     margin-bottom: .985rem 0;
     font-size: 28px;
   }
-  
+
   .info-estabelecimento {
     margin: 1.5rem 0;
     display: flex;
@@ -439,7 +455,7 @@ footer h5 {
     gap: .985rem;
     align-items: center;
   }
-  
+
   .info-estabelecimento h5 {
     font-size: 26px;
     font-weight: 800;
@@ -455,7 +471,7 @@ footer h5 {
   .info-estabelecimento ul li {
     list-style: none;
   }
-  
+
   .info-estabelecimento ul li a {
     display: flex;
     align-items: center;
@@ -463,17 +479,17 @@ footer h5 {
     gap: .4rem;
   }
 
-  
+
   .info-estabelecimento ul li a .img {
     display: flex;
     align-items: center;
   }
-  
+
   .info-estabelecimento ul li a p {
     margin: 0;
-  } 
+  }
 
-  .info-estabelecimento ul li a .img img{
+  .info-estabelecimento ul li a .img img {
     width: 24px;
     height: 24px;
   }

@@ -1,6 +1,9 @@
 var urlAPI = "https://vaiaondecapixaba.com.br/api/eventos/"
 let headers = new Headers();
 
+const urlParams = new URLSearchParams(window.location.search);
+const id = urlParams.get('id');
+
 headers.append('Content-Type', 'application/json');
 headers.append('Accept', 'application/json');
 
@@ -83,7 +86,7 @@ function getCarouselImages() {
       restaurantes.forEach(rest => {
         const img1 = document.createElement('img');
         img1.src = `${rest.capa}`
-        divSlide1.appendChild(img1)
+        divSlide1.appendChild(img1);
       })
     })
 }
@@ -122,10 +125,94 @@ async function getDistance() {
       restaurant.forEach(rest => {
         var latitudeRestaurante = rest.latitude;
         var longitudeRestaurante = rest.longitude;
-        distancia.innerHTML =
-          `
-          ${distance(coordinates.lat, coordinates.long, latitudeRestaurante, longitudeRestaurante, "K")}KM
-        `;
+        distancia.innerHTML = `${rest.cidade}`;
       })
     })
 }
+
+function getDay() {
+  const statusSpan = document.querySelector('.status');
+
+  fetch(urlAPI + `?id=${id}/`)
+    .then(res => res.json())
+    .then(events => {
+      events.forEach(event => {
+        statusSpan.textContent = `Dia: ${event.dia}`;
+      })
+    })
+}
+
+function getTime() {
+  const inicio = document.getElementsByClassName('dias')[0];
+  const terminio = document.getElementsByClassName('dias')[1];
+
+  fetch(urlAPI + `?id=${id}/`)
+    .then(res => res.json())
+    .then(events => {
+      events.forEach(event => {
+        inicio.textContent = `Abertura: ${event.horarioAbertura}`;
+        terminio.textContent = `Fechamento: ${event.horarioFechamento}`;
+      })
+    })
+}
+
+function getContact() {
+  const aInstagram = document.querySelector('.link-instagram');
+  const txtInstagram = document.querySelector('.text-instagram');
+  const aPhone = document.querySelector('.link-phone');
+  const txtPhone = document.querySelector('.text-phone');
+
+
+  fetch(urlAPI + `?id=${id}/`)
+    .then(response => response.json())
+    .then(restaurant => {
+      restaurant.forEach(rest => {
+        if (rest.instagramURL != '') {
+          aInstagram.href = `${rest.instagramURL}`;
+        } else {
+          aInstagram.style.display = 'none';
+        }
+        if (rest.instagram != '') {
+          txtInstagram.textContent = `${rest.instagram}`;
+        } else {
+          txtInstagram.textContent = 'Instagram';
+        }
+        if (rest.telefone != '') {
+          aPhone.href = `tel:+55${rest.telefone}`;
+          const numeroFormatado = formatarNumero(rest.telefone);
+          txtPhone.textContent = numeroFormatado;
+        } else {
+          txtPhone.textContent = 'Não possui telefone de contato';
+        }
+
+      })
+    })
+}
+
+function getAdress() {
+  const address = document.querySelector('.adress-place');
+  const mapView = document.querySelector('.map-view');
+  const siteView = document.querySelector('.uber-view');
+
+  const pReview = document.querySelector('.review');
+
+  fetch(urlAPI + `?id=${id}/`)
+    .then(response => response.json())
+    .then(restaurant => {
+      restaurant.forEach(rest => {
+        address.href = `${rest.linkLocal}`;
+        address.textContent = `${rest.cidade}`;
+
+        siteView.addEventListener('click', () => window.location.href = `https://${rest.linkLocal}`);
+        pReview.textContent = rest.review;
+      })
+    })
+}
+
+window.addEventListener('load', getCarouselImages);
+window.addEventListener('load', getPlaceName);
+window.addEventListener('load', getDistance);
+window.addEventListener('load', getDay);
+window.addEventListener('load', getTime);
+window.addEventListener('load', getContact);
+window.addEventListener('load', getAdress);
