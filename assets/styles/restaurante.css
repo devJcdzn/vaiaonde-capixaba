@@ -14,6 +14,13 @@
   font-family: 'Nunito Sans', sans-serif;
 }
 
+ul, li, p, 
+h1, h2, h3,
+h3, h4, h5, 
+span {
+  cursor: default;
+}
+
 body {
   -webkit-font-smoothing: antialiased;
   background-color: var(--background-color);
@@ -181,6 +188,10 @@ header {
   margin-bottom: 2rem;
 }
 
+.status {
+  cursor: default;
+}
+
 .horarios-restaurante {
   margin: 1rem 0;
   color: var(--colorItens);
@@ -340,6 +351,14 @@ footer h5 {
   text-align: center;
   font-weight: 700;
   font-size: 12px;
+}
+
+.reels-btn {
+  cursor: pointer;
+}
+
+.route {
+  cursor: pointer;
 }
 
 @media (min-width: 760px) {
