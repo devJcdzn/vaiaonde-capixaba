@@ -192,7 +192,7 @@ function getContact() {
 function getAdress() {
   const address = document.querySelector('.adress-place');
   const mapView = document.querySelector('.map-view');
-  const siteView = document.querySelector('.uber-view');
+  const siteView = document.querySelector('.site-view');
 
   const pReview = document.querySelector('.review');
 
@@ -200,7 +200,7 @@ function getAdress() {
     .then(response => response.json())
     .then(restaurant => {
       restaurant.forEach(rest => {
-        address.href = `${rest.linkLocal}`;
+        address.href = `https://${rest.linkLocal}`;
         address.textContent = `${rest.cidade}`;
 
         siteView.addEventListener('click', () => window.location.href = `https://${rest.linkLocal}`);

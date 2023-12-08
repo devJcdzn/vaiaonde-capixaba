@@ -5,3 +5,9 @@
 #backBtn {
   cursor: pointer;
 }
+
+.endereco-restaurante {
+  display: flex;
+  flex-direction: row;
+  margin-bottom: 1rem;
+}
