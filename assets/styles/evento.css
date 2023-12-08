@@ -1,5 +1,11 @@
 .site-view {
   cursor: pointer;
+  width: 100%;
+  height: 100%;
+  border: none;
+  background: transparent;
+  color: #000;
+  font-weight: 800;
 }
 
 #backBtn {
@@ -11,3 +17,4 @@
   flex-direction: row;
   margin-bottom: 1rem;
 }
+
