@@ -71,8 +71,6 @@ function distance(lat1, lon1, lat2, lon2, unit) {
   return dist.toFixed(2);
 }
 
-
-
 function getCarouselImages() {
   const urlParams = new URLSearchParams(window.location.search);
   const id = urlParams.get('id');
@@ -144,6 +142,7 @@ async function getDistance() {
 
 function getStatus() {
   const statusSpan = document.querySelector('.status');
+  const cupomSpan = document.querySelector('.cupom');
 
   const urlParams = new URLSearchParams(window.location.search);
   const id = urlParams.get('id');
@@ -208,7 +207,20 @@ function getStatus() {
             statusSpan.textContent = "Restaurante Fechado";
           }
         }
+
+        if (localStorage.getItem('assinatura') == 1 && rest.temCupom ==1) {
+          cupomSpan.style.display = 'flex';
+          cupomSpan.textContent= 'Usar cupom'
+        } else if (rest.temCupom == 1 && localStorage.getItem('assinatura') != 1) {
+          cupomSpan.textContent = 'Cupom indisponível';
+          cupomSpan.addEventListener('click', () => {
+            window.location.href = './user/assinar.html';
+          })
+        } else {
+          cupomSpan.style.display = 'none';
+        }
       })
+
     })
 }
 

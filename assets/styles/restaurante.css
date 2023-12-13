@@ -188,6 +188,11 @@ header {
   margin-bottom: 2rem;
 }
 
+.cupom {
+  cursor: pointer;
+  margin-bottom: .8rem;
+}
+
 .status {
   cursor: default;
 }
@@ -430,6 +435,12 @@ footer h5 {
   }
 
   .status {
+    width: 400px;
+    font-size: 22px;
+    padding: .7rem;
+  }
+
+  .cupom {
     width: 400px;
     font-size: 22px;
     padding: .7rem;
