@@ -139,6 +139,21 @@ async function getGategorias() {
   return data;
 }
 
+async function exibirCategorias() {
+  const data = await getGategorias();
+  const categoryList = document.querySelector('.options-category');
+  data.forEach(categoria => {
+    categoryList.innerHTML += `
+    <ul>
+        <li class="options ${categoria.nome.toLowerCase()}">
+          ${categoria.nome}
+        </li>
+        
+      </ul>
+    `
+  })
+}
+
 function redirect(res) {
   window.location.href = `restaurante.html?id=${res}`;
 }
@@ -186,6 +201,25 @@ async function exibirRestaurantes() {
     }
   });
 
+  const cards = document.querySelectorAll('.card');
+    const categryBtn = document.querySelectorAll('.options');
+
+    categryBtn.forEach(btn => {
+      btn.addEventListener('click', () => {
+        cards.forEach(card => {
+          if (btn.classList[1].includes(card.classList[1])) {
+            card.style.display = 'flex';
+          } 
+          else if (btn.classList[1] === 'todos') {
+            card.style.display = 'flex';
+          }
+          else {
+            card.style.display = 'none';
+          }
+        });
+      })
+    })
+
   const spanStatus = document.querySelectorAll('.status');
   spanStatus.forEach(span => {
     let status = span.textContent;
@@ -195,4 +229,5 @@ async function exibirRestaurantes() {
   })
 }
 
+window.addEventListener('load', exibirCategorias);
 window.addEventListener('load', exibirRestaurantes);
