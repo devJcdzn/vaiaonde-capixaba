@@ -52,6 +52,27 @@ function redirect(res) {
   window.location.href = `rota.html?id=${res}`;
 }
 
+async function getGategorias() {
+  const response = await fetch(urlAPI + 'categoriasLugares/');
+  const data = response.json();
+  return data;
+}
+
+async function exibirCategorias() {
+  const data = await getGategorias();
+  const categoryList = document.querySelector('.options-category');
+  data.forEach(categoria => {
+    categoryList.innerHTML += `
+    <ul>
+        <li class="options ${categoria.nome.toLowerCase()}">
+          ${categoria.nome}
+        </li>
+        
+      </ul>
+    `
+  })
+}
+
 async function exibirRotas() {
   const coordinates = await getLocatioinUser();
 
@@ -83,10 +104,30 @@ async function exibirRotas() {
             </div>
             </div>`
     });
+  
+    const cards = document.querySelectorAll('.card');
+    const categryBtn = document.querySelectorAll('.options');
+
+    categryBtn.forEach(btn => {
+      btn.addEventListener('click', () => {
+        cards.forEach(card => {
+          if (btn.classList[1].includes(card.classList[1])) {
+            card.style.display = 'flex';
+          } 
+          else if (btn.classList[1] === 'todos') {
+            card.style.display = 'flex';
+          }
+          else {
+            card.style.display = 'none';
+          }
+        });
+      })
+    })
+
   } else {
     cardSections.innerHTML += `<span class="event-null">Nenhuma rota disponível :(</span>`;
   }
 }
 
-
+window.addEventListener('load', exibirCategorias);
 window.addEventListener('load', exibirRotas);
