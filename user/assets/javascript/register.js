@@ -31,6 +31,12 @@ btnShowPass.addEventListener('click', () => {
 
 
 $('#phone_user').mask('(99) 99999-9999');
+let inputPhone = document.getElementById('phone_user');
+let phone;
+inputPhone.addEventListener('input', () => {
+  phone = inputPhone.value;
+  console.log(phone);
+});
 
 document.getElementById('form-user').addEventListener('submit', function (e) {
   e.preventDefault();
@@ -39,7 +45,6 @@ document.getElementById('form-user').addEventListener('submit', function (e) {
   const age = document.getElementById('data_user').value;
   const gender = document.getElementById('gender_user').value;
   const city = document.getElementById('city_user').value;
-  let phone = document.getElementById('phone_user').value;
   const email = document.getElementById('email_user').value;
   let password = document.getElementById('password_user').value;
   let confirmPassword = document.getElementById('confirmPassword').value;

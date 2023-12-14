@@ -12,7 +12,7 @@
 
 <body>
   <header>
-    <a href="../index.html" class="back-btn"><img src="../public/seta-esquerda.png" alt="icone-voltar" id="icon-back"></a>
+    <a onclick="back()" class="back-btn"><img src="../public/seta-esquerda.png" alt="icone-voltar" id="icon-back"></a>
     <a href="../index.html" class="logo-btn"><img src="../public/logo.png" alt="LOGO" id="logo" class="logo"></a>
     <a href="../userAccountSettings/options/index.html" class="settings-btn"><img src="../public/settings-outline.svg" alt=""></a>
   </header>
@@ -31,7 +31,7 @@
           <span id="email-user">user@gmail.com</span>
         </label>
         <label for="telefone-user">
-          <p>Telefone</p>
+          <p>Telefone:</p>
           <span id="telefone-user">(00) 00000-0000</span>
         </label>
       </div>
@@ -48,6 +48,7 @@
     </footer>
   </main>
 
+  <script src="../assets/javascript/funcoes.js"></script>
   <script src="assets/checarClub.js"></script>
   <script src="assets/javascript/index.js"></script>
 </body>

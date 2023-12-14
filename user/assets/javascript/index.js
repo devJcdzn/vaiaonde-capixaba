@@ -73,7 +73,7 @@ var nome = document.getElementById("name-user");
 var idade = document.getElementById("data-nascimento");
 var email = document.getElementById("email-user");
 var telefone = document.getElementById("telefone-user")
-var assinatura = document.getElementById("assinatura");
+// var assinatura = document.getElementById("assinatura");
 var botaoAssinatura = document.getElementById("assinaturaButton");
 
 headers.append('Content-Type', 'application/json');
@@ -108,7 +108,7 @@ function formatTel(tel) {
         let formatedTel = `(${ddd}) ${firstPart}-${secondPart}`;
         return formatedTel;
     } else {
-        return 'Não foi posível encontrar seu nmero de telefone.'
+        return 'Sem telefone.';
     }
 }
 
@@ -121,22 +121,22 @@ email.textContent = localStorage.getItem('email');
 telefone.textContent = formatTel(tel);
 
 
-if (localStorage.getItem('assinatura') == "0") {
-    assinatura.textContent = "Você não faz parte do Vai Aonde Club";
-    botaoAssinatura.href = "infoclub.html"
+// if (localStorage.getItem('assinatura') == "0") {
+//     assinatura.textContent = "Você não faz parte do Vai Aonde Club";
+//     botaoAssinatura.href = "infoclub.html"
 
-} else if (localStorage.getItem('assinatura') == "1") {
-    assinatura.textContent = "Você faz parte do Vai Aonde Club BASIC😎!";
-    botaoAssinatura.href = "assinatura.html"
+// } else if (localStorage.getItem('assinatura') == "1") {
+//     assinatura.textContent = "Você faz parte do Vai Aonde Club BASIC😎!";
+//     botaoAssinatura.href = "assinatura.html"
 
-} else if (localStorage.getItem('assinatura') == "2") {
-    assinatura.textContent = "Você faz parte do Vai Aonde Club MÉDIO😎!";
-    botaoAssinatura.href = "assinatura.html"
+// } else if (localStorage.getItem('assinatura') == "2") {
+//     assinatura.textContent = "Você faz parte do Vai Aonde Club MÉDIO😎!";
+//     botaoAssinatura.href = "assinatura.html"
 
-} else if (localStorage.getItem('assinatura') == "3") {
-    assinatura.textContent = "Você faz parte do Vai Aonde Club PLUS😎!";
-    botaoAssinatura.href = "assinatura.html"
-}
+// } else if (localStorage.getItem('assinatura') == "3") {
+//     assinatura.textContent = "Você faz parte do Vai Aonde Club PLUS😎!";
+//     botaoAssinatura.href = "assinatura.html"
+// }
 
 window.addEventListener('load', verificarLogin);
 window.addEventListener('load', verificarAssinatura);

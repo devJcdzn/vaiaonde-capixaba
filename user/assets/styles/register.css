@@ -51,7 +51,7 @@ input::placeholder {
 }
 
 #form-user fieldset {
-  margin: 1rem;
+  margin: 1rem 1.8rem;
   display: flex;
   flex-direction: column;
   border: none;
