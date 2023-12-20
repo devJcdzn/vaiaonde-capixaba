@@ -215,9 +215,13 @@ function getStatus() {
             window.location.href = `./qrCode/index.html?id=${rest.id}`;
           })
         } else if (rest.temCupom == 1 && localStorage.getItem('assinatura') != 1) {
-          cupomSpan.textContent = 'Cupom indisponível';
+          cupomSpan.textContent = 'Assine o VA Club';
           cupomSpan.addEventListener('click', () => {
-            window.location.href = './user/assinar.html';
+            if(localStorage.getItem('usuario' == 'logado')) {
+              window.location.href = './user/assinar.html';
+            } else {
+              window.location.href = './user/login.html';
+            }
           })
         } else {
           cupomSpan.style.display = 'none';
