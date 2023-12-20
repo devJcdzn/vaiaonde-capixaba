@@ -210,7 +210,10 @@ function getStatus() {
 
         if (localStorage.getItem('assinatura') == 1 && rest.temCupom ==1) {
           cupomSpan.style.display = 'flex';
-          cupomSpan.textContent= 'Usar cupom'
+          cupomSpan.textContent= 'Usar cupom';
+          cupomSpan.addEventListener('click', () => {
+            window.location.href = `../../qrCode/index.html?id=${rest.id}`;
+          })
         } else if (rest.temCupom == 1 && localStorage.getItem('assinatura') != 1) {
           cupomSpan.textContent = 'Cupom indisponível';
           cupomSpan.addEventListener('click', () => {
