@@ -14,22 +14,10 @@ const urlParams = new URLSearchParams(window.location.search);
 const id = urlParams.get('id');
 const userId = localStorage.getItem('id');
 
-async function getId() {
-    fetch(urlAPI + `restaurantes/?id=${id}/`)
-        .then(res => res.json())
-        .then(restaurante => {
-
-            restaurante.forEach(async (rest) => {
-                const restId = await rest.id;
-                return restId;
-            })
-        })
-}
-
 //Check Voucher 
 
 async function checkVoucher(voucher) {
-    const restId = await getId();
+    const restId = id;
 
     fetch("https://vaiaondecapixaba.com.br/api/cupons/usar/", {
         method: 'POST',
@@ -90,5 +78,3 @@ function changeCam() {
 
 // Camera de preferência
 html5QrCode.start({ facingMode: `${camback ? "user" : "environment"}` }, config, qrCodeSuccessCallback);
-
-
