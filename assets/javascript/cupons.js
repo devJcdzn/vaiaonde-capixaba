@@ -170,6 +170,18 @@ async function exibirRestaurantes() {
 
   data.forEach(rest => {
 
+    let primeiraEstrela = rest.primeiraEstrela;
+    let segundaEstrela = rest.segundaEstrela;
+    let terceiraEstrela = rest.terceiraEstrela;
+    let quartaEstrela = rest.quartaEstrela;
+    let quintaEstrela = rest.quintaEstrela;
+
+    let total = primeiraEstrela + segundaEstrela + terceiraEstrela + quartaEstrela + quintaEstrela;
+
+    let media = (primeiraEstrela + (segundaEstrela * 2) + (terceiraEstrela * 3) + (quartaEstrela * 4) + (quintaEstrela * 5)) / total;
+
+    let nota = Math.round(media);
+
     if (rest.temCupom > 0) {
       cardSections.innerHTML += `
         <div class="card ${rest.categoria.toLowerCase()}" onclick="redirect(${rest.id})">
@@ -184,13 +196,15 @@ async function exibirRestaurantes() {
             <div class="left-infos">
               <h2 class="title">${rest.nome}</h2>
               <span class="status">${statusPlace(dia, hora, rest)}</span>
+              <div class="average ${nota}">
+              </div>
             </div>
             <div class="right-infos">
               <span class="distance">${distance(
-          coordinates.lat,
-          coordinates.long,
-          rest.latitude,
-          rest.longitude, "K")}KM
+        coordinates.lat,
+        coordinates.long,
+        rest.latitude,
+        rest.longitude, "K")}KM
               </span>
               <img src="./public/location-sharp.svg" alt="">
               <img src="./public/heart-outline.svg" alt="">
@@ -202,23 +216,23 @@ async function exibirRestaurantes() {
   });
 
   const cards = document.querySelectorAll('.card');
-    const categryBtn = document.querySelectorAll('.options');
+  const categryBtn = document.querySelectorAll('.options');
 
-    categryBtn.forEach(btn => {
-      btn.addEventListener('click', () => {
-        cards.forEach(card => {
-          if (btn.classList[1].includes(card.classList[1])) {
-            card.style.display = 'flex';
-          } 
-          else if (btn.classList[1] === 'todos') {
-            card.style.display = 'flex';
-          }
-          else {
-            card.style.display = 'none';
-          }
-        });
-      })
+  categryBtn.forEach(btn => {
+    btn.addEventListener('click', () => {
+      cards.forEach(card => {
+        if (btn.classList[1].includes(card.classList[1])) {
+          card.style.display = 'flex';
+        }
+        else if (btn.classList[1] === 'todos') {
+          card.style.display = 'flex';
+        }
+        else {
+          card.style.display = 'none';
+        }
+      });
     })
+  });
 
   const spanStatus = document.querySelectorAll('.status');
   spanStatus.forEach(span => {
@@ -226,7 +240,25 @@ async function exibirRestaurantes() {
     if (status === 'Fechado') {
       span.classList.add('closed');
     }
-  })
+  });
+
+  const average = document.querySelectorAll('.average');
+  average.forEach(stars => {
+    const nota = stars.classList[1];
+    for (let i = 0; i < nota; i++) {
+      const star = document.createElement('img');
+      star.src = './public/star-fill.svg';
+      star.style.height = '18px';
+      stars.appendChild(star);
+    }
+    for (let i = 0; i < 5 - nota; i++) {
+      const star = document.createElement('img');
+      star.src = './public/star-not-av.svg';
+      star.style.height = '18px';
+      stars.appendChild(star);
+    }
+  });
+
 }
 
 window.addEventListener('load', exibirCategorias);

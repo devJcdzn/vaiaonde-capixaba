@@ -84,6 +84,19 @@ async function exibirEvents() {
 
   if (data.length > 0) {
     data.forEach((eventos) => {
+
+      let primeiraEstrela = eventos.primeiraEstrela;
+      let segundaEstrela = eventos.segundaEstrela;
+      let terceiraEstrela = eventos.terceiraEstrela;
+      let quartaEstrela = eventos.quartaEstrela;
+      let quintaEstrela = eventos.quintaEstrela;
+
+      let total = primeiraEstrela + segundaEstrela + terceiraEstrela + quartaEstrela + quintaEstrela;
+
+      let media = (primeiraEstrela + (segundaEstrela * 2) + (terceiraEstrela * 3) + (quartaEstrela * 4) + (quintaEstrela * 5)) / total;
+
+      let nota = Math.round(media);
+
       cardSections.innerHTML += `
     <div class="card ${eventos.categoria.toLowerCase()}" onclick="redirect(${eventos.id})">
         <div class="top-card">
@@ -93,6 +106,8 @@ async function exibirEvents() {
           <div class="left-infos">
             <h2 class="title">${eventos.nome}</h2>
             <span class="status">${eventos.dia}</span>
+            <div class="average ${nota}">
+            </div>
           </div>
           <div class="right-infos">
             <span class="distan">${eventos.cidade.toUpperCase()}</span>
@@ -111,7 +126,7 @@ async function exibirEvents() {
         cards.forEach(card => {
           if (btn.classList[1].includes(card.classList[1])) {
             card.style.display = 'flex';
-          } 
+          }
           else if (btn.classList[1] === 'todos') {
             card.style.display = 'flex';
           }
@@ -120,7 +135,24 @@ async function exibirEvents() {
           }
         });
       })
-    })
+    });
+
+    const average = document.querySelectorAll('.average');
+    average.forEach(stars => {
+      const nota = stars.classList[1];
+      for (let i = 0; i < nota; i++) {
+        const star = document.createElement('img');
+        star.src = './public/star-fill.svg';
+        star.style.height = '18px';
+        stars.appendChild(star);
+      }
+      for (let i = 0; i < 5 - nota; i++) {
+        const star = document.createElement('img');
+        star.src = './public/star-not-av.svg';
+        star.style.height = '18px';
+        stars.appendChild(star);
+      }
+    });
 
   } else {
     cardSections.innerHTML += `<span class="event-null">Nenhum evento encontrado :(</span>`;

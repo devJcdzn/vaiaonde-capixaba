@@ -179,8 +179,6 @@ async function exibirRestaurantes() {
 
     let nota = Math.round(media);
 
-    console.log(nota);
-
     cardSections.innerHTML += `
       <div class="card ${rest.categoria.toLowerCase()}" onclick="redirect(${rest.id})">
         <div class="top-card">
@@ -287,7 +285,7 @@ async function exibirRestaurantes() {
       star.style.height = '18px';
       stars.appendChild(star);
     }
-  })
+  });
 
 }
 
