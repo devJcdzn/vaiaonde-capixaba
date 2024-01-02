@@ -66,14 +66,26 @@ function deletarConta() {
     }
 }
 
+
+
+async function getUser() {
+    const userId = localStorage.getItem('id');
+    const response = await fetch(`https://vaiaondecapixaba.com.br/api/usuarios/?id=${userId}`);
+    const data = await response.json();
+
+    return data;
+};
+
+
+
 let date = new Date();
 let headers = new Headers();
 var perfil = document.getElementById("user-img");
 var nome = document.getElementById("name-user");
 var idade = document.getElementById("data-nascimento");
 var email = document.getElementById("email-user");
-var telefone = document.getElementById("telefone-user")
-// var assinatura = document.getElementById("assinatura");
+var telefone = document.getElementById("telefone-user");
+var cupons = document.getElementById("voucher-user");
 var botaoAssinatura = document.getElementById("assinaturaButton");
 
 headers.append('Content-Type', 'application/json');
@@ -112,6 +124,12 @@ function formatTel(tel) {
     }
 }
 
+async function getCupons() {
+    const data = await getUser();
+    console.log(data[0])
+    cupons.textContent = data[0].quantidade_cupons;
+}
+
 nome.textContent = localStorage.getItem('nome');
 
 idade.textContent = formatAge(age);
@@ -120,23 +138,7 @@ email.textContent = localStorage.getItem('email');
 
 telefone.textContent = formatTel(tel);
 
-
-// if (localStorage.getItem('assinatura') == "0") {
-//     assinatura.textContent = "Você não faz parte do Vai Aonde Club";
-//     botaoAssinatura.href = "infoclub.html"
-
-// } else if (localStorage.getItem('assinatura') == "1") {
-//     assinatura.textContent = "Você faz parte do Vai Aonde Club BASIC😎!";
-//     botaoAssinatura.href = "assinatura.html"
-
-// } else if (localStorage.getItem('assinatura') == "2") {
-//     assinatura.textContent = "Você faz parte do Vai Aonde Club MÉDIO😎!";
-//     botaoAssinatura.href = "assinatura.html"
-
-// } else if (localStorage.getItem('assinatura') == "3") {
-//     assinatura.textContent = "Você faz parte do Vai Aonde Club PLUS😎!";
-//     botaoAssinatura.href = "assinatura.html"
-// }
+getCupons();
 
 window.addEventListener('load', verificarLogin);
 window.addEventListener('load', verificarAssinatura);
