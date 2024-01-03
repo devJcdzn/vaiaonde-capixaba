@@ -76,3 +76,32 @@ span {
   font-weight: 700;
   line-height: 28px;
 }
+
+.popup {
+  position: fixed;
+  bottom: 1rem;
+  left: -100%;
+  transform: translateX(-50%);
+  width: 90%;
+  height: 80px;
+  border-radius: 20px;
+  background: var(--colorItens);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all .3s;
+}
+
+.close-popup {
+  position: absolute;
+  top: 2px;
+  right: .8rem;
+  font-size: 26px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.content-pop {
+  font-size: 20px;
+  font-weight: 700;
+}
