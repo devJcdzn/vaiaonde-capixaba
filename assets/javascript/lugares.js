@@ -172,6 +172,30 @@ async function exibirCategorias() {
       </ul>
     `
   })
+};
+
+async function setFavorites(lugarId) {
+  let favorites = JSON.parse(localStorage.getItem('favoritos')) || [];
+  const restauranteExistente = favorites.find(favorite => favorite.lugarId === lugarId);
+
+  const popup = document.querySelector('.popup');
+  const closePopup = document.querySelector('.close-popup');
+
+  if (!restauranteExistente) {
+    favorites.push({ lugarId });
+    localStorage.setItem('favoritos', JSON.stringify(favorites));
+
+    popup.style.left = '50%';
+    setTimeout(() => {
+      popup.style.left = '-100%';
+    }, 4000);
+
+    closePopup.addEventListener('click', () => {
+      popup.style.left = '-100%';
+    });
+  } else {
+    console.log(`Restaurante ${lugarId} já está nos favoritos!`);
+  }
 }
 
 async function exibirLugares() {
@@ -193,8 +217,8 @@ async function exibirLugares() {
     let nota = Math.round(media);
 
     cardSections.innerHTML += `
-    <div class="card ${lugares.categoria.toLowerCase()}" onclick="redirect(${lugares.id})">
-        <div class="top-card">
+    <div class="card ${lugares.categoria.toLowerCase()}">
+        <div class="top-card" onclick="redirect(${lugares.id})">
             <img class="card-banner" src=${lugares.capa} alt="">
         </div>
         <div class="bottom-card">
@@ -212,7 +236,7 @@ async function exibirLugares() {
       lugares.longitude, "K")}KM
               </span>
             <img src="./public/location-sharp.svg" alt="">
-            <img src="./public/heart-outline.svg" alt="">
+            <img onclick="setFavorites(${lugares.id})" src="./public/heart-outline.svg" alt="">
           </div>
         </div>
       </div>`
