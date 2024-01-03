@@ -154,6 +154,30 @@ async function exibirCategorias() {
   })
 }
 
+async function setFavorites(restauranteId) {
+  let favorites = JSON.parse(localStorage.getItem('favoritos')) || [];
+  const restauranteExistente = favorites.find(favorite => favorite.restauranteId === restauranteId);
+
+  const popup = document.querySelector('.popup');
+  const closePopup = document.querySelector('.close-popup');
+
+  if (!restauranteExistente) {
+    favorites.push({ restauranteId });
+    localStorage.setItem('favoritos', JSON.stringify(favorites));
+
+    popup.style.left = '50%';
+    setTimeout(() => {
+      popup.style.left = '-100%';
+    }, 4000);
+
+    closePopup.addEventListener('click', () => {
+      popup.style.left = '-100%';
+    });
+  } else {
+    console.log(`Restaurante ${restauranteId} já está nos favoritos!`);
+  }
+}
+
 async function exibirRestaurantes() {
   const coordinates = await getLocatioinUser();
   const data = await getRestaurantes();
@@ -163,7 +187,6 @@ async function exibirRestaurantes() {
       return "active"
     }
   }
-
 
   data.forEach(rest => {
 
@@ -180,8 +203,8 @@ async function exibirRestaurantes() {
     let nota = Math.round(media);
 
     cardSections.innerHTML += `
-      <div class="card ${rest.categoria.toLowerCase()}" onclick="redirect(${rest.id})">
-        <div class="top-card">
+      <div class="card ${rest.categoria.toLowerCase()}">
+        <div class="top-card" onclick="redirect(${rest.id})">
             <div class="voucher ${temCupom(rest.temCupom)} ">
               <img class="voucher-img" src="./public/bookmark-svgrepo-com.svg" alt="">
               <span class="voucher-span">Cupom On</span>
@@ -203,11 +226,13 @@ async function exibirRestaurantes() {
       rest.longitude, "K")}KM
             </span>
             <img src="./public/location-sharp.svg" alt="">
-            <img src="./public/heart-outline.svg" alt="">
-          </div>
+            <img onclick="setFavorites(${rest.id})" src="./public/heart-outline.svg" alt="">
+            </div>
         </div>
       </div>
     `
+
+
   });
 
 
@@ -215,6 +240,9 @@ async function exibirRestaurantes() {
   const search = document.querySelector('.searchbar');
   const searchBtn = document.querySelector('.searchBtn');
   const categryBtn = document.querySelectorAll('.options');
+  const favBtns = document.querySelectorAll('.favorite-button');
+
+
 
 
   function filterCards() {
@@ -286,6 +314,7 @@ async function exibirRestaurantes() {
       stars.appendChild(star);
     }
   });
+
 
 }
 
