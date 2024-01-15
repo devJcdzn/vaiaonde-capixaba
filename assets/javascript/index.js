@@ -11,13 +11,12 @@ let fechaModal = document.getElementById('chefamodal');
 const menuLateralInfos = document.querySelector('.menu-lateral-infos');
 
 buttonNav.onclick = () => {
-  menuLateral[1].style.display = 'block';
-  menuLateral[1].style.position = 'fixed';
+  menuLateral[1].style.left = 0;
   fechaModal.style.display = 'block';
 }
 
 fechaModal.onclick = () => {
-  menuLateral[1].style.display = 'none';
+  menuLateral[1].style.left = '-100%';
   fechaModal.style.display = 'none';
 
 }
