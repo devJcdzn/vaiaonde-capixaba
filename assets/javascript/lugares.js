@@ -190,19 +190,36 @@ async function setFavorites(lugarId) {
       popup.style.left = '-100%';
     }, 4000);
 
-    closePopup.addEventListener('click', () => {
-      popup.style.left = '-100%';
-    });
   } else {
-    console.log(`Restaurante ${lugarId} já está nos favoritos!`);
+    favorites = favorites.filter(favorite => favorite.lugarId !== lugarId);
+    localStorage.setItem('favoritos', JSON.stringify(favorites));
+
+    popup.style.left = '50%';
+    popup.textContent = "Item removido dos Favoritos."
+    setTimeout(() => {
+      popup.style.left = '-100%';
+    }, 4000);
+
+
+    console.log(`Restaurante ${lugarId} removido dos favoritos!`);
+  }
+
+  const favoriteButton = document.querySelector(`.favorite-${lugarId}`);
+  if (favoriteButton) {
+    const isFavorite = favorites.some(favorite => favorite.lugarId === lugarId);
+    favoriteButton.src = `./public/heart-${isFavorite ? 'filled' : 'outline'}.svg`;
   }
 }
 
 async function exibirLugares() {
   const coordinates = await getLocatioinUser();
 
+  const favorites = JSON.parse(localStorage.getItem('favoritos')) || [];
+
   const data = await getLugares();
   data.forEach((lugares) => {
+
+    const isFavorite = favorites.some(favorite => favorite.lugarId === lugares.id);
 
     let primeiraEstrela = lugares.primeiraEstrela;
     let segundaEstrela = lugares.segundaEstrela;
@@ -236,12 +253,12 @@ async function exibirLugares() {
       lugares.longitude, "K")}KM
               </span>
             <img src="./public/location-sharp.svg" alt="">
-            <img onclick="setFavorites(${lugares.id})" src="./public/heart-outline.svg" alt="">
+            <img class="favorite-${lugares.id}" onclick="setFavorites(${lugares.id})" src=./public/heart-${isFavorite ? 'filled' : 'outline'}.svg alt="">
           </div>
         </div>
       </div>`
   });
-  
+
   const categryBtn = document.querySelectorAll('.options');
   const cards = document.querySelectorAll('.card');
 
@@ -282,7 +299,7 @@ async function exibirLugares() {
       cards.forEach(card => {
         if (btn.classList[1] === card.classList[1]) {
           card.style.display = 'flex';
-        } 
+        }
         else if (btn.classList[1] === 'todos') {
           card.style.display = 'flex';
         }

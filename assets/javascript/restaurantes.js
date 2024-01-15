@@ -4,6 +4,7 @@ const cardSections = document.querySelector('.cards');
 var data = new Date();
 var dia = data.getDay();
 var hora = data.toLocaleTimeString();
+var favorite = false;
 
 const backBtn = document.querySelector('#backBtn');
 backBtn.addEventListener('click', () => window.history.back());
@@ -165,6 +166,7 @@ async function setFavorites(restauranteId) {
     favorites.push({ restauranteId });
     localStorage.setItem('favoritos', JSON.stringify(favorites));
 
+
     popup.style.left = '50%';
     setTimeout(() => {
       popup.style.left = '-100%';
@@ -173,14 +175,36 @@ async function setFavorites(restauranteId) {
     closePopup.addEventListener('click', () => {
       popup.style.left = '-100%';
     });
+
   } else {
-    console.log(`Restaurante ${restauranteId} já está nos favoritos!`);
+    favorites = favorites.filter(favorite => favorite.restauranteId !== restauranteId);
+    localStorage.setItem('favoritos', JSON.stringify(favorites));
+
+    popup.style.left = '50%';
+    popup.textContent = "Item removido dos Favoritos."
+    setTimeout(() => {
+      popup.style.left = '-100%';
+    }, 4000);
+
+    closePopup.addEventListener('click', () => {
+      popup.style.left = '-100%';
+    });
+
+    console.log(`Restaurante ${restauranteId} removido dos favoritos!`);
+  }
+
+  const favoriteButton = document.querySelector(`.favorite-${restauranteId}`);
+  if (favoriteButton) {
+    const isFavorite = favorites.some(favorite => favorite.restauranteId === restauranteId);
+    favoriteButton.src = `./public/heart-${isFavorite ? 'filled' : 'outline'}.svg`;
   }
 }
 
 async function exibirRestaurantes() {
   const coordinates = await getLocatioinUser();
   const data = await getRestaurantes();
+
+  const favorites = JSON.parse(localStorage.getItem('favoritos')) || [];
 
   function temCupom(rest) {
     if (rest != 0) {
@@ -189,6 +213,8 @@ async function exibirRestaurantes() {
   }
 
   data.forEach(rest => {
+
+    const isFavorite = favorites.some(favorite => favorite.restauranteId === rest.id);
 
     let primeiraEstrela = rest.primeiraEstrela;
     let segundaEstrela = rest.segundaEstrela;
@@ -226,7 +252,7 @@ async function exibirRestaurantes() {
       rest.longitude, "K")}KM
             </span>
             <img src="./public/location-sharp.svg" alt="">
-            <img onclick="setFavorites(${rest.id})" src="./public/heart-outline.svg" alt="">
+            <img class="favorite-${rest.id}" onclick="setFavorites(${rest.id})" src= ${isFavorite ? "./public/heart-filled.svg" : "./public/heart-outline.svg"} alt="">
             </div>
         </div>
       </div>
@@ -315,8 +341,8 @@ async function exibirRestaurantes() {
     }
   });
 
-
 }
 
+// checkFavorites();
 exibirCategorias();
 window.addEventListener('load', exibirRestaurantes);

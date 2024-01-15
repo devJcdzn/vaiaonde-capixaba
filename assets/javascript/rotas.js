@@ -73,13 +73,52 @@ async function exibirCategorias() {
   })
 }
 
-async function exibirRotas() {
-  const coordinates = await getLocatioinUser();
+async function setFavorites(rotasId) {
+  let favorites = JSON.parse(localStorage.getItem('favoritos')) || [];
+  const restauranteExistente = favorites.find(favorite => favorite.rotasId === rotasId);
 
+  const popup = document.querySelector('.popup');
+  const closePopup = document.querySelector('.close-popup');
+
+  if (!restauranteExistente) {
+    favorites.push({ rotasId });
+    localStorage.setItem('favoritos', JSON.stringify(favorites));
+
+    // popup.style.left = '50%';
+    // setTimeout(() => {
+    //   popup.style.left = '-100%';
+    // }, 4000);
+
+  } else {
+    favorites = favorites.filter(favorite => favorite.rotasId !== rotasId);
+    localStorage.setItem('favoritos', JSON.stringify(favorites));
+
+    // popup.style.left = '50%';
+    // popup.textContent = "Item removido dos Favoritos."
+    // setTimeout(() => {
+    //   popup.style.left = '-100%';
+    // }, 4000);
+
+
+    console.log(`Restaurante ${rotasId} removido dos favoritos!`);
+  }
+
+  const favoriteButton = document.querySelector(`.favorite-${rotasId}`);
+  if (favoriteButton) {
+    const isFavorite = favorites.some(favorite => favorite.rotasId === rotasId);
+    favoriteButton.src = `./public/heart-${isFavorite ? 'filled' : 'outline'}.svg`;
+  }
+}
+
+async function exibirRotas() {
   const data = await getRotas();
+  const coordinates = await getLocatioinUser();
+  const favorites = JSON.parse(localStorage.getItem('favoritos')) || [];
 
   if (data.length > 0) {
     data.forEach((lugares) => {
+
+      const isFavorite = favorites.some(favorite => favorite.rotasId === lugares.id);
 
       let primeiraEstrela = lugares.primeiraEstrela;
       let segundaEstrela = lugares.segundaEstrela;
@@ -94,13 +133,13 @@ async function exibirRotas() {
       let nota = Math.round(media);
 
       cardSections.innerHTML += `
-    <div class="card" onclick="redirect(${lugares.id})">
-        <div class="top-card">
+    <div class="card">
+        <div class="top-card" onclick="redirect(${lugares.id})">
             <img class="card-banner" src=${lugares.capa} alt="">
         </div>
         <div class="bottom-card">
           <div class="left-infos">
-            <h2 class="title">${lugares.nome}</h2>
+            <h2 class="title" onclick="redirect(${lugares.id})">${lugares.nome}</h2>
             <span class="status">${lugares.cidade}</span>
             <div class="average ${nota}">
             </div>
@@ -113,7 +152,7 @@ async function exibirRotas() {
         lugares.longitude, "K")}KM
               </span>
             <img src="./public/location-sharp.svg" alt="">
-            <img src="./public/heart-outline.svg" alt="">
+            <img class="favorite-${lugares.id}" onclick="setFavorites(${lugares.id})" src=./public/heart-${isFavorite ? 'filled' : 'outline'}.svg alt="">
             </div>
             </div>
             </div>`

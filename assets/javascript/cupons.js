@@ -158,9 +158,56 @@ function redirect(res) {
   window.location.href = `restaurante.html?id=${res}`;
 }
 
+async function setFavorites(restauranteId) {
+  let favorites = JSON.parse(localStorage.getItem('favoritos')) || [];
+  const restauranteExistente = favorites.find(favorite => favorite.restauranteId === restauranteId);
+
+  const popup = document.querySelector('.popup');
+  const closePopup = document.querySelector('.close-popup');
+
+  if (!restauranteExistente) {
+    favorites.push({ restauranteId });
+    localStorage.setItem('favoritos', JSON.stringify(favorites));
+
+
+    // popup.style.left = '50%';
+    // setTimeout(() => {
+    //   popup.style.left = '-100%';
+    // }, 4000);
+
+    // closePopup.addEventListener('click', () => {
+    //   popup.style.left = '-100%';
+    // });
+
+  } else {
+    favorites = favorites.filter(favorite => favorite.restauranteId !== restauranteId);
+    localStorage.setItem('favoritos', JSON.stringify(favorites));
+
+    // popup.style.left = '50%';
+    // popup.textContent = "Item removido dos Favoritos."
+    // setTimeout(() => {
+    //   popup.style.left = '-100%';
+    // }, 4000);
+
+    // closePopup.addEventListener('click', () => {
+    //   popup.style.left = '-100%';
+    // });
+
+    console.log(`Restaurante ${restauranteId} removido dos favoritos!`);
+  }
+
+  const favoriteButton = document.querySelector(`.favorite-${restauranteId}`);
+  if (favoriteButton) {
+    const isFavorite = favorites.some(favorite => favorite.restauranteId === restauranteId);
+    favoriteButton.src = `./public/heart-${isFavorite ? 'filled' : 'outline'}.svg`;
+  }
+}
+
 async function exibirRestaurantes() {
   const coordinates = await getLocatioinUser();
   const data = await getRestaurantes();
+
+  const favorites = JSON.parse(localStorage.getItem('favoritos')) || [];
 
   function temCupom(rest) {
     if (rest != 0) {
@@ -169,6 +216,8 @@ async function exibirRestaurantes() {
   }
 
   data.forEach(rest => {
+
+    const isFavorite = favorites.some(favorite => favorite.restauranteId === rest.id);
 
     let primeiraEstrela = rest.primeiraEstrela;
     let segundaEstrela = rest.segundaEstrela;
@@ -184,8 +233,8 @@ async function exibirRestaurantes() {
 
     if (rest.temCupom > 0) {
       cardSections.innerHTML += `
-        <div class="card ${rest.categoria.toLowerCase()}" onclick="redirect(${rest.id})">
-          <div class="top-card">
+        <div class="card ${rest.categoria.toLowerCase()}">
+          <div class="top-card" onclick="redirect(${rest.id})">
               <div class="voucher ${temCupom(rest.temCupom)} ">
                 <img class="voucher-img" src="./public/bookmark-svgrepo-com.svg" alt="">
                 <span class="voucher-span">Cupom On</span>
@@ -194,7 +243,7 @@ async function exibirRestaurantes() {
           </div>
           <div class="bottom-card">
             <div class="left-infos">
-              <h2 class="title">${rest.nome}</h2>
+              <h2 class="title" onclick="redirect(${rest.id})">${rest.nome}</h2>
               <span class="status">${statusPlace(dia, hora, rest)}</span>
               <div class="average ${nota}">
               </div>
@@ -207,7 +256,7 @@ async function exibirRestaurantes() {
         rest.longitude, "K")}KM
               </span>
               <img src="./public/location-sharp.svg" alt="">
-              <img src="./public/heart-outline.svg" alt="">
+              <img class="favorite-${rest.id}" onclick="setFavorites(${rest.id})" src= ${isFavorite ? "./public/heart-filled.svg" : "./public/heart-outline.svg"} alt="">
             </div>
           </div>
         </div>

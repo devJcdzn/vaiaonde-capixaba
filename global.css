@@ -77,6 +77,13 @@ span {
   line-height: 28px;
 }
 
+.favorite-id {
+  background: transparent;
+  cursor: pointer;
+  border: none;
+  outline: none;
+}
+
 .popup {
   position: fixed;
   bottom: 1rem;

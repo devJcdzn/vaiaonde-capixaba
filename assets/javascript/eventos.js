@@ -77,13 +77,61 @@ function redirect(res) {
   window.location.href = `evento.html?id=${res}`;
 }
 
+async function setFavorites(eventosId) {
+  let favorites = JSON.parse(localStorage.getItem('favoritos')) || [];
+  const restauranteExistente = favorites.find(favorite => favorite.eventosId === eventosId);
+
+  const popup = document.querySelector('.popup');
+  const closePopup = document.querySelector('.close-popup');
+
+  if (!restauranteExistente) {
+    favorites.push({ eventosId });
+    localStorage.setItem('favoritos', JSON.stringify(favorites));
+
+
+    // popup.style.left = '50%';
+    // setTimeout(() => {
+    //   popup.style.left = '-100%';
+    // }, 4000);
+
+    // closePopup.addEventListener('click', () => {
+    //   popup.style.left = '-100%';
+    // });
+
+  } else {
+    favorites = favorites.filter(favorite => favorite.eventosId !== eventosId);
+    localStorage.setItem('favoritos', JSON.stringify(favorites));
+
+    // popup.style.left = '50%';
+    // popup.textContent = "Item removido dos Favoritos."
+    // setTimeout(() => {
+    //   popup.style.left = '-100%';
+    // }, 4000);
+
+    // closePopup.addEventListener('click', () => {
+    //   popup.style.left = '-100%';
+    // });
+
+    console.log(`Restaurante ${eventosId} removido dos favoritos!`);
+  }
+
+  const favoriteButton = document.querySelector(`.favorite-${eventosId}`);
+  if (favoriteButton) {
+    const isFavorite = favorites.some(favorite => favorite.eventosId === eventosId);
+    favoriteButton.src = `./public/heart-${isFavorite ? 'filled' : 'outline'}.svg`;
+  }
+}
+
 async function exibirEvents() {
-  const coordinates = await getLocatioinUser();
+  // const coordinates = await getLocatioinUser();
+  const favorites = JSON.parse(localStorage.getItem('favoritos')) || [];
 
   const data = await getEvents();
 
   if (data.length > 0) {
     data.forEach((eventos) => {
+
+      const isFavorite = favorites.some(favorite => favorite.eventosId === eventos.id);
 
       let primeiraEstrela = eventos.primeiraEstrela;
       let segundaEstrela = eventos.segundaEstrela;
@@ -98,13 +146,13 @@ async function exibirEvents() {
       let nota = Math.round(media);
 
       cardSections.innerHTML += `
-    <div class="card ${eventos.categoria.toLowerCase()}" onclick="redirect(${eventos.id})">
-        <div class="top-card">
+    <div class="card ${eventos.categoria.toLowerCase()}">
+        <div class="top-card" onclick="redirect(${eventos.id})">
             <img class="card-banner" src=${eventos.capa} alt="">
         </div>
         <div class="bottom-card">
           <div class="left-infos">
-            <h2 class="title">${eventos.nome}</h2>
+            <h2 class="title" onclick="redirect(${eventos.id})">${eventos.nome}</h2>
             <span class="status">${eventos.dia}</span>
             <div class="average ${nota}">
             </div>
@@ -112,7 +160,7 @@ async function exibirEvents() {
           <div class="right-infos">
             <span class="distan">${eventos.cidade.toUpperCase()}</span>
             <img src="./public/location-sharp.svg" alt="">
-            <img src="./public/heart-outline.svg" alt="">
+            <img class="favorite-${eventos.id}" onclick="setFavorites(${eventos.id})" src= ${isFavorite ? "./public/heart-filled.svg" : "./public/heart-outline.svg"} alt="">
             </div>
             </div>
             </div>`
